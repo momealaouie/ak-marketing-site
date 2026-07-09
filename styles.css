@@ -47,39 +47,26 @@ h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); }
 h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 
 .eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--green);
-  margin-bottom: 16px;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  font-size: 0.8rem; font-weight: 500;
+  color: var(--green); margin-bottom: 16px;
 }
 
 .hero .eyebrow,
 .preview .eyebrow { color: var(--green-light); }
 
 .eyebrow::before {
-  content: "";
-  display: inline-block;
-  width: 32px;
-  height: 2px;
-  background: currentColor;
-  vertical-align: middle;
-  margin-right: 12px;
+  content: ""; display: inline-block;
+  width: 32px; height: 2px; background: currentColor;
+  vertical-align: middle; margin-right: 12px;
 }
 
 /* ---------------- Buttons ---------------- */
 .btn {
-  display: inline-block;
-  padding: 16px 40px;
-  font-family: var(--font);
-  font-size: 1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
+  display: inline-block; padding: 16px 40px;
+  font-family: var(--font); font-size: 1rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  text-decoration: none; border: none; cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
@@ -97,54 +84,34 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 
 /* ---------------- Header ---------------- */
 .site-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex; align-items: center; justify-content: space-between;
   padding: 18px 32px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  position: sticky;
-  top: 0;
-  background: var(--navy);
-  z-index: 100;
+  position: sticky; top: 0; background: var(--navy); z-index: 100;
 }
 
 .brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: var(--white);
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; color: var(--white);
 }
 
 .brand-logo { width: 42px; height: 42px; }
 
-.brand-name {
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  font-size: 0.95rem;
-}
+.brand-name { font-weight: 700; letter-spacing: 0.12em; font-size: 0.95rem; }
 
 .site-nav { display: flex; align-items: center; gap: 28px; }
 
 .site-nav a {
-  color: var(--white);
-  text-decoration: none;
-  font-size: 0.9rem;
-  letter-spacing: 0.04em;
-  opacity: 0.85;
+  color: var(--white); text-decoration: none;
+  font-size: 0.9rem; letter-spacing: 0.04em; opacity: 0.85;
 }
 
 .site-nav a:hover { opacity: 1; }
 
-.nav-social { display: inline-flex; align-items: center; }
+.nav-social { display: inline-flex; align-items: center; padding: 6px; } /* padding = bigger touch target */
 .nav-social:hover { color: var(--green-light); }
 
-.nav-cta {
-  background: var(--green);
-  padding: 10px 22px;
-  font-weight: 700;
-  opacity: 1 !important;
-}
+.nav-cta { background: var(--green); padding: 10px 22px; font-weight: 700; opacity: 1 !important; }
 .nav-cta:hover { background: var(--green-dark); }
 
 /* ---------------- 1. Hero: reviews & results ---------------- */
@@ -163,20 +130,12 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   padding: 28px 24px;
 }
 
-.stat-number, .stat-suffix {
-  font-size: 2.6rem;
-  font-weight: 700;
-  color: var(--white);
-}
-
+.stat-number, .stat-suffix { font-size: 2.6rem; font-weight: 700; color: var(--white); }
 .stat-suffix { color: var(--green-light); }
 
 .stat-label {
-  margin-top: 6px;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  opacity: 0.7;
+  margin-top: 6px; font-size: 0.85rem; opacity: 0.7;
+  text-transform: uppercase; letter-spacing: 0.08em;
 }
 
 .reviews-grid {
@@ -591,11 +550,46 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 }
 
 @media (max-width: 560px) {
-  .stats-grid { grid-template-columns: 1fr; }
+  /* Header: fits a 360px screen without overflowing */
+  .site-header { padding: 10px 14px; }
+  .brand { gap: 8px; }
+  .brand-logo { width: 34px; height: 34px; }
+  .brand-name { font-size: 0.78rem; letter-spacing: 0.08em; }
+  .site-nav { gap: 10px; }
+  .nav-cta { padding: 9px 13px; font-size: 0.78rem; }
+
+  .container { padding: 0 18px; }
+  .hero { padding: 52px 0 60px; }
+  .about, .preview, .contact { padding: 60px 0; }
+
+  /* Stats: compact 2x2 grid instead of a tall stack */
+  .stats-grid { gap: 12px; margin: 40px 0 36px; }
+  .stat-block { padding: 18px 16px; }
+  .stat-number, .stat-suffix { font-size: 1.9rem; }
+  .stat-label { font-size: 0.72rem; }
+
+  .reviews-grid { gap: 14px; margin-bottom: 40px; }
+  .review-card { padding: 20px; }
+
+  .clients-grid { gap: 12px; }
+  .client-card { padding: 12px; gap: 8px; }
+  .client-logo-img, .client-logo { height: 60px; }
+  .client-name { font-size: 0.72rem; }
+  .clients-grid > :nth-child(5) { grid-column: 1 / -1; } /* odd 5th card spans full width */
+
+  /* Full-width tap-friendly buttons */
+  .hero-actions .btn { width: 100%; text-align: center; }
+  .work-socials { flex-direction: column; align-items: stretch; }
+  .work-socials p { margin-right: 0; text-align: center; }
+  .social-btn { justify-content: center; }
+
   .process-grid { grid-template-columns: 1fr; }
-  .video-grid { grid-template-columns: 1fr; }
-  .clients-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .tabs { gap: 6px; }
+  .tab { padding: 10px 14px; font-size: 0.76rem; }
+  .video-grid { gap: 12px; }
+
   .form-row { grid-template-columns: 1fr; }
-  .hero { padding: 64px 0 72px; }
-  .about, .preview, .contact { padding: 64px 0; }
+
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
 }
