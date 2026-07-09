@@ -9,7 +9,7 @@ Static website for a film production & marketing agency. Sharp corners, premium 
 | `index.html` | The whole page: hero (reviews + results + featured clients) → keyword marquee → about → selected work tabs → contact form |
 | `styles.css` | All styling. `border-radius: 0 !important` globally — sharp corners everywhere |
 | `script.js` | Video list, tabs, scroll reveal animations, animated stats, form validation |
-| `assets/logo.svg` | Logo (SVG reconstruction — replace with the original file if preferred) |
+| `assets/logo.png` | The AK Mediaz logo (original) |
 | `assets/videos/` | Put video files here |
 
 ## Editing content
@@ -35,8 +35,8 @@ Edit directly in `index.html` (the `#results` section).
 Edit the `.clients-grid` cards in `index.html`. Swap the initials `<span class="client-logo">` for `<img class="client-logo" src="assets/clients/name.png" alt="...">` when you have real logo files.
 
 ### Socials
-Instagram & TikTok are linked in the selected-work section, the contact section and the footer:
-[instagram.com/ak.mediaz](https://www.instagram.com/ak.mediaz) · [tiktok.com/@ak.mediaz](https://www.tiktok.com/@ak.mediaz)
+Instagram & TikTok are linked in the selected-work section and the contact section; the footer's Community column also includes LinkedIn:
+[instagram.com/ak.mediaz](https://www.instagram.com/ak.mediaz) · [tiktok.com/@ak.mediaz](https://www.tiktok.com/@ak.mediaz) · [linkedin.com/company/ak-mediaz](https://www.linkedin.com/company/ak-mediaz/)
 
 ## Run locally
 
