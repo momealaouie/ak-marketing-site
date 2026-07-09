@@ -1,17 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <!-- AK Marketing — logga (SVG-rekonstruktion, färger från original) -->
-  <circle cx="100" cy="100" r="98" fill="#14181C"/>
-  <circle cx="100" cy="100" r="80" fill="#6E7357"/>
+  <!-- AK Mediaz — logo (SVG reconstruction of the original mark) -->
+  <rect width="200" height="200" fill="#575C49"/>
   <g fill="#FFFFFF">
-    <!-- A: vänster diagonal -->
-    <polygon points="36,134 78,66 96,66 54,134"/>
-    <!-- A: tvärslå (triangel) -->
-    <polygon points="58,116 82,116 82,96"/>
-    <!-- K: vertikal (lutad) -->
-    <polygon points="100,66 118,66 106,134 88,134"/>
-    <!-- K: övre arm -->
-    <polygon points="110,100 152,66 172,66 122,106"/>
-    <!-- K: nedre arm -->
-    <polygon points="122,106 156,134 134,134 106,112"/>
+    <!-- A: diagonal stroke -->
+    <polygon points="11,143 69,56 92,56 34,143"/>
+    <!-- A: crossbar (stencil triangle) -->
+    <polygon points="58,124 88,124 88,98"/>
+    <!-- Shared vertical bar -->
+    <rect x="95" y="56" width="25" height="87"/>
+    <!-- K: upper arm -->
+    <polygon points="126,101 158,56 185,56 146,101"/>
+    <!-- K: lower arm -->
+    <polygon points="126,101 146,101 185,143 158,143"/>
   </g>
 </svg>

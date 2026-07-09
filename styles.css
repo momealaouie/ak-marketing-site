@@ -1,14 +1,15 @@
 /* ================================================================
-   AK Marketing — global styles
-   Regel: raka ramar överallt. border-radius: 0 på ALLT.
-   Färger avlästa från loggan.
+   AK Mediaz — global styles
+   Rule: sharp corners everywhere. border-radius: 0 on EVERYTHING.
+   Colors sampled from the logo.
    ================================================================ */
 
 :root {
   --navy: #14181C;
   --navy-deep: #0E1A2B;
-  --green: #6E7357;
-  --green-dark: #565B44;
+  --green: #575C49;        /* logo green */
+  --green-dark: #464A3A;   /* hover */
+  --green-light: #9AA184;  /* small accent text on dark backgrounds */
   --white: #FFFFFF;
   --off-white: #F2F1EC;
   --font: "Space Grotesk", system-ui, -apple-system, sans-serif;
@@ -18,12 +19,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border-radius: 0 !important; /* raka hörn — alltid */
+  border-radius: 0 !important; /* sharp corners — always */
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font);
@@ -56,17 +55,20 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   margin-bottom: 16px;
 }
 
+.hero .eyebrow,
+.preview .eyebrow { color: var(--green-light); }
+
 .eyebrow::before {
   content: "";
   display: inline-block;
   width: 32px;
   height: 2px;
-  background: var(--green);
+  background: currentColor;
   vertical-align: middle;
   margin-right: 12px;
 }
 
-/* ---------------- Knappar ---------------- */
+/* ---------------- Buttons ---------------- */
 .btn {
   display: inline-block;
   padding: 16px 40px;
@@ -78,24 +80,27 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-.btn-green {
-  background: var(--green);
+.btn-green { background: var(--green); color: var(--white); }
+.btn-green:hover { background: var(--green-dark); }
+
+.btn-ghost {
+  background: transparent;
   color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.35);
 }
+.btn-ghost:hover { border-color: var(--green-light); color: var(--green-light); }
 
-.btn-green:hover {
-  background: var(--green-dark);
-}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
 /* ---------------- Header ---------------- */
 .site-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 32px;
+  padding: 18px 32px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   position: sticky;
   top: 0;
@@ -111,10 +116,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   color: var(--white);
 }
 
-.brand-logo {
-  width: 42px;
-  height: 42px;
-}
+.brand-logo { width: 42px; height: 42px; }
 
 .brand-name {
   font-weight: 700;
@@ -122,11 +124,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   font-size: 0.95rem;
 }
 
-.site-nav {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
+.site-nav { display: flex; align-items: center; gap: 28px; }
 
 .site-nav a {
   color: var(--white);
@@ -144,14 +142,10 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   font-weight: 700;
   opacity: 1 !important;
 }
-
 .nav-cta:hover { background: var(--green-dark); }
 
-/* ---------------- 1. Hero: recensioner & resultat ---------------- */
-.hero {
-  padding: 96px 0 110px;
-  background: var(--navy);
-}
+/* ---------------- 1. Hero: reviews & results ---------------- */
+.hero { padding: 96px 0 110px; background: var(--navy); }
 
 .stats-grid {
   display: grid;
@@ -166,14 +160,13 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   padding: 28px 24px;
 }
 
-.stat-number,
-.stat-suffix {
+.stat-number, .stat-suffix {
   font-size: 2.6rem;
   font-weight: 700;
   color: var(--white);
 }
 
-.stat-suffix { color: var(--green); }
+.stat-suffix { color: var(--green-light); }
 
 .stat-label {
   margin-top: 6px;
@@ -196,19 +189,47 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   padding: 28px;
 }
 
-.review-card p {
-  font-size: 1rem;
-  margin-bottom: 18px;
-}
+.review-card p { font-size: 1rem; margin-bottom: 18px; }
 
 .review-card footer {
   font-size: 0.85rem;
-  color: var(--green);
+  color: var(--green-light);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
-/* ---------------- 2. Om oss ---------------- */
+/* ---------------- Keyword marquee ---------------- */
+.marquee {
+  background: var(--green);
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 26s linear infinite;
+}
+
+.marquee-track span {
+  display: block;
+  padding: 16px 24px;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+}
+
+.marquee-track .dot { opacity: 0.5; padding: 16px 4px; }
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* ---------------- 2. About ---------------- */
 .about {
   background: var(--off-white);
   color: var(--navy);
@@ -222,8 +243,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 }
 
 .process-heading {
-  margin-top: 72px;
-  margin-bottom: 32px;
+  margin: 72px 0 32px;
   font-size: 1.4rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -255,16 +275,10 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   letter-spacing: 0.06em;
 }
 
-.process-step p {
-  font-size: 0.92rem;
-  opacity: 0.85;
-}
+.process-step p { font-size: 0.92rem; opacity: 0.85; }
 
-/* ---------------- 3. Preview: videos ---------------- */
-.preview {
-  background: var(--navy);
-  padding: 100px 0;
-}
+/* ---------------- 3. Preview: selected work ---------------- */
+.preview { background: var(--navy); padding: 100px 0; }
 
 .preview-sub {
   margin-top: 16px;
@@ -293,7 +307,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   transition: all 0.2s ease;
 }
 
-.tab:hover { border-color: var(--green); color: var(--green); }
+.tab:hover { border-color: var(--green-light); color: var(--green-light); }
 
 .tab.active {
   background: var(--green);
@@ -337,7 +351,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 .video-placeholder .play-icon {
   width: 48px;
   height: 48px;
-  border: 2px solid var(--green);
+  border: 2px solid var(--green-light);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -345,7 +359,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 
 .video-placeholder .play-icon::after {
   content: "";
-  border-left: 14px solid var(--green);
+  border-left: 14px solid var(--green-light);
   border-top: 9px solid transparent;
   border-bottom: 9px solid transparent;
   margin-left: 4px;
@@ -366,24 +380,19 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--green);
+  color: var(--green-light);
 }
 
-/* ---------------- 4. Kontakt ---------------- */
+/* ---------------- 4. Contact ---------------- */
 .contact {
   background: var(--off-white);
   color: var(--navy);
   padding: 100px 0;
 }
 
-.contact-sub {
-  margin: 16px 0 40px;
-  opacity: 0.8;
-}
+.contact-sub { margin: 16px 0 40px; opacity: 0.8; }
 
-#contactForm {
-  max-width: 640px;
-}
+#contactForm { max-width: 640px; }
 
 .form-row {
   display: grid;
@@ -416,6 +425,8 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   resize: vertical;
 }
 
+.form-field input::placeholder { color: rgba(20, 24, 28, 0.35); }
+
 .form-field input:focus,
 .form-field textarea:focus {
   outline: 2px solid var(--green);
@@ -442,6 +453,19 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   font-weight: 700;
 }
 
+.contact-instagram {
+  margin-top: 40px;
+  font-size: 0.95rem;
+}
+
+.contact-instagram a {
+  color: var(--green);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid var(--green);
+}
+.contact-instagram a:hover { color: var(--green-dark); border-color: var(--green-dark); }
+
 /* ---------------- Footer ---------------- */
 .site-footer {
   background: var(--navy-deep);
@@ -457,16 +481,9 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   flex-wrap: wrap;
 }
 
-.footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+.footer-brand { display: flex; align-items: center; gap: 12px; }
 
-.footer-links {
-  display: flex;
-  gap: 24px;
-}
+.footer-links { display: flex; gap: 24px; }
 
 .footer-links a {
   color: var(--white);
@@ -474,15 +491,48 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   font-size: 0.85rem;
   opacity: 0.75;
 }
-
 .footer-links a:hover { opacity: 1; }
 
-.footer-copy {
-  font-size: 0.8rem;
-  opacity: 0.5;
+.footer-insta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--green-light);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.footer-insta:hover { color: var(--white); }
+
+.footer-copy { font-size: 0.8rem; opacity: 0.5; }
+
+/* ---------------- Scroll reveal animations ---------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.65s ease var(--d, 0s), transform 0.65s ease var(--d, 0s);
 }
 
-/* ---------------- Responsivt ---------------- */
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger grid children */
+.stats-grid > :nth-child(2), .process-grid > :nth-child(2) { --d: 0.08s; }
+.stats-grid > :nth-child(3), .process-grid > :nth-child(3) { --d: 0.16s; }
+.stats-grid > :nth-child(4), .process-grid > :nth-child(4) { --d: 0.24s; }
+.reviews-grid > :nth-child(2) { --d: 0.1s; }
+.reviews-grid > :nth-child(3) { --d: 0.2s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .marquee-track { animation: none; }
+}
+
+/* ---------------- Responsive ---------------- */
 @media (max-width: 900px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .reviews-grid { grid-template-columns: 1fr; }
