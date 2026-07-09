@@ -136,6 +136,9 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 
 .site-nav a:hover { opacity: 1; }
 
+.nav-social { display: inline-flex; align-items: center; }
+.nav-social:hover { color: var(--green-light); }
+
 .nav-cta {
   background: var(--green);
   padding: 10px 22px;
@@ -231,7 +234,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 26s linear infinite;
+  animation: marquee 60s linear infinite; /* JS sets exact duration for constant speed */
 }
 
 .marquee-seq { display: flex; flex-shrink: 0; }
@@ -411,15 +414,16 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 }
 
 .social-btn {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 13px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 16px 30px;
+  background: var(--green);
   color: var(--white); text-decoration: none;
-  font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em;
-  transition: all 0.2s ease;
+  font-weight: 700; font-size: 0.95rem; letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background 0.2s ease;
 }
 
-.social-btn:hover { border-color: var(--green-light); color: var(--green-light); }
+.social-btn:hover { background: var(--green-dark); }
 .social-btn svg { flex-shrink: 0; }
 
 /* ---------------- 4. Contact ---------------- */
@@ -536,10 +540,12 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 
 .footer-social a {
   display: inline-flex; align-items: center; gap: 8px;
-  color: var(--green-light); text-decoration: none;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--white); text-decoration: none;
   font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em;
 }
-.footer-social a:hover { color: var(--white); }
+.footer-social a:hover { border-color: var(--green-light); color: var(--green-light); }
 
 .footer-copy { font-size: 0.8rem; opacity: 0.5; }
 
@@ -576,7 +582,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   .video-grid { grid-template-columns: repeat(2, 1fr); }
   .clients-grid { grid-template-columns: repeat(2, 1fr); }
   .site-nav { gap: 16px; }
-  .site-nav a:not(.nav-cta) { display: none; }
+  .site-nav a:not(.nav-cta):not(.nav-social) { display: none; }
 }
 
 @media (max-width: 560px) {

@@ -30,6 +30,7 @@ const CATEGORY_LABELS = {
    The loop animates the track from 0 to -50%, so the track must be
    two identical halves, each at least as wide as the viewport.
    Clone the keyword sequence until that holds — no empty gaps. */
+const MARQUEE_SPEED = 40; // pixels per second — lower = slower
 const marqueeTrack = document.querySelector(".marquee-track");
 if (marqueeTrack) {
   const firstSeq = marqueeTrack.querySelector(".marquee-seq");
@@ -39,6 +40,9 @@ if (marqueeTrack) {
     while (marqueeTrack.children.length < perHalf * 2) {
       marqueeTrack.appendChild(firstSeq.cloneNode(true));
     }
+    // Constant pixel speed regardless of how many clones the screen needed
+    const halfWidth = seqWidth * (marqueeTrack.children.length / 2);
+    marqueeTrack.style.animationDuration = `${Math.round(halfWidth / MARQUEE_SPEED)}s`;
   }
 }
 
