@@ -222,7 +222,11 @@
       <h2 class="reveal">Ready to grow?</h2>
       <p class="contact-sub reveal">Fill in the form and we'll get back to you within 24 hours.</p>
 
-      <form id="contactForm" class="reveal" action="https://formspree.io/f/YOUR-FORM-ID" method="POST" novalidate>
+      <form id="contactForm" class="reveal" action="https://formsubmit.co/mome.alaouie1@gmail.com" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="New inquiry — AK Mediaz website">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
         <div class="form-row">
           <div class="form-field">
             <label for="name">Name *</label>
@@ -253,6 +257,7 @@
         </div>
         <button type="submit" class="btn btn-green">Send message</button>
         <p class="form-success" id="formSuccess" hidden>Thank you! We'll get back to you within 24 hours.</p>
+        <p class="form-error" id="formError" hidden>Something went wrong — please try again, or DM us on Instagram instead.</p>
       </form>
 
       <p class="contact-instagram reveal">

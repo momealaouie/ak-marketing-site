@@ -140,6 +140,7 @@ document.querySelectorAll(".stat-number").forEach((el) => statObserver.observe(e
 /* ---------------- Contact form: validation ---------------- */
 const form = document.getElementById("contactForm");
 const successMsg = document.getElementById("formSuccess");
+const errorMsg = document.getElementById("formError");
 
 function setInvalid(input, invalid) {
   input.closest(".form-field").classList.toggle("invalid", invalid);
@@ -179,20 +180,25 @@ form.addEventListener("submit", async (e) => {
 
   if (!nameOk || !emailOk || !phoneOk || !messageOk) return;
 
-  // Sends to Formspree (replace YOUR-FORM-ID in index.html with a real ID)
+  // Sends via FormSubmit's AJAX endpoint (same address as the form action)
+  const submitBtn = form.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  successMsg.hidden = true;
+  errorMsg.hidden = true;
   try {
-    const response = await fetch(form.action, {
+    const ajaxUrl = form.action.replace("formsubmit.co/", "formsubmit.co/ajax/");
+    const response = await fetch(ajaxUrl, {
       method: "POST",
       body: new FormData(form),
       headers: { Accept: "application/json" },
     });
-    if (!response.ok) throw new Error("Formspree error");
+    if (!response.ok) throw new Error("FormSubmit error");
     form.reset();
     successMsg.hidden = false;
   } catch {
-    // Fallback until the Formspree ID is in place: still show confirmation
-    form.reset();
-    successMsg.hidden = false;
+    errorMsg.hidden = false;
+  } finally {
+    submitBtn.disabled = false;
   }
 });
 
