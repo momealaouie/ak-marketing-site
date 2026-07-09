@@ -1,4 +1,4 @@
-# AK Mediaz — website
+# AK Media — website
 
 Static website for a film production & marketing agency. Sharp corners, premium navy/green/white palette (colors sampled from the logo), reviews & results first.
 
@@ -9,7 +9,7 @@ Static website for a film production & marketing agency. Sharp corners, premium 
 | `index.html` | The whole page: hero (reviews + results + featured clients) → keyword marquee → about → selected work tabs → contact form |
 | `styles.css` | All styling. `border-radius: 0 !important` globally — sharp corners everywhere |
 | `script.js` | Video list, tabs, scroll reveal animations, animated stats, form validation |
-| `assets/logo.png` | The AK Mediaz logo (original) |
+| `assets/logo.png` | The AK Media logo (original) |
 | `assets/videos/` | Put video files here |
 
 ## Editing content
