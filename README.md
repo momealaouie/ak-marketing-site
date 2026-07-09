@@ -6,7 +6,7 @@ Static website for a film production & marketing agency. Sharp corners, premium 
 
 | File | Contents |
 |------|----------|
-| `index.html` | The whole page: hero (reviews + results) → keyword marquee → about → selected work tabs → contact form |
+| `index.html` | The whole page: hero (reviews + results + featured clients) → keyword marquee → about → selected work tabs → contact form |
 | `styles.css` | All styling. `border-radius: 0 !important` globally — sharp corners everywhere |
 | `script.js` | Video list, tabs, scroll reveal animations, animated stats, form validation |
 | `assets/logo.svg` | Logo (SVG reconstruction — replace with the original file if preferred) |
@@ -31,8 +31,12 @@ Validation: name required, email must be valid (`user@domain.tld`), phone requir
 ### Stats & reviews
 Edit directly in `index.html` (the `#results` section).
 
-### Instagram
-Linked in the footer and contact section: [@ak.mediaz](https://www.instagram.com/ak.mediaz)
+### Featured clients
+Edit the `.clients-grid` cards in `index.html`. Swap the initials `<span class="client-logo">` for `<img class="client-logo" src="assets/clients/name.png" alt="...">` when you have real logo files.
+
+### Socials
+Instagram & TikTok are linked in the selected-work section, the contact section and the footer:
+[instagram.com/ak.mediaz](https://www.instagram.com/ak.mediaz) · [tiktok.com/@ak.mediaz](https://www.tiktok.com/@ak.mediaz)
 
 ## Run locally
 

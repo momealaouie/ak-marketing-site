@@ -198,6 +198,28 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   letter-spacing: 0.06em;
 }
 
+/* ---------------- Featured clients ---------------- */
+.clients { margin-bottom: 56px; }
+
+.clients-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+.client-card {
+  display: flex; align-items: center; gap: 14px;
+  padding: 20px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.client-logo {
+  width: 44px; height: 44px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--green); color: var(--white);
+  font-weight: 700; font-size: 0.95rem; letter-spacing: 0.05em;
+}
+
+.client-card img.client-logo { object-fit: contain; background: var(--white); }
+
+.client-name { font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; }
+
 /* ---------------- Keyword marquee ---------------- */
 .marquee {
   background: var(--green);
@@ -212,15 +234,12 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   animation: marquee 26s linear infinite;
 }
 
+.marquee-seq { display: flex; flex-shrink: 0; }
+
 .marquee-track span {
-  display: block;
-  padding: 16px 24px;
-  color: var(--white);
-  font-weight: 700;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  white-space: nowrap;
+  display: block; padding: 16px 24px; white-space: nowrap;
+  color: var(--white); font-weight: 700; font-size: 0.85rem;
+  text-transform: uppercase; letter-spacing: 0.14em;
 }
 
 .marquee-track .dot { opacity: 0.5; padding: 16px 4px; }
@@ -383,6 +402,26 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   color: var(--green-light);
 }
 
+.work-socials { margin-top: 48px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+.work-socials p {
+  font-weight: 700; font-size: 0.85rem;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--green-light); margin-right: 8px;
+}
+
+.social-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--white); text-decoration: none;
+  font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em;
+  transition: all 0.2s ease;
+}
+
+.social-btn:hover { border-color: var(--green-light); color: var(--green-light); }
+.social-btn svg { flex-shrink: 0; }
+
 /* ---------------- 4. Contact ---------------- */
 .contact {
   background: var(--off-white);
@@ -493,17 +532,14 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 }
 .footer-links a:hover { opacity: 1; }
 
-.footer-insta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--green-light);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+.footer-social { display: flex; gap: 18px; }
+
+.footer-social a {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--green-light); text-decoration: none;
+  font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em;
 }
-.footer-insta:hover { color: var(--white); }
+.footer-social a:hover { color: var(--white); }
 
 .footer-copy { font-size: 0.8rem; opacity: 0.5; }
 
@@ -520,9 +556,9 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 }
 
 /* Stagger grid children */
-.stats-grid > :nth-child(2), .process-grid > :nth-child(2) { --d: 0.08s; }
-.stats-grid > :nth-child(3), .process-grid > :nth-child(3) { --d: 0.16s; }
-.stats-grid > :nth-child(4), .process-grid > :nth-child(4) { --d: 0.24s; }
+.stats-grid > :nth-child(2), .process-grid > :nth-child(2), .clients-grid > :nth-child(2) { --d: 0.08s; }
+.stats-grid > :nth-child(3), .process-grid > :nth-child(3), .clients-grid > :nth-child(3) { --d: 0.16s; }
+.stats-grid > :nth-child(4), .process-grid > :nth-child(4), .clients-grid > :nth-child(4) { --d: 0.24s; }
 .reviews-grid > :nth-child(2) { --d: 0.1s; }
 .reviews-grid > :nth-child(3) { --d: 0.2s; }
 
@@ -538,6 +574,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   .reviews-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: repeat(2, 1fr); }
   .video-grid { grid-template-columns: repeat(2, 1fr); }
+  .clients-grid { grid-template-columns: repeat(2, 1fr); }
   .site-nav { gap: 16px; }
   .site-nav a:not(.nav-cta) { display: none; }
 }
@@ -546,6 +583,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   .stats-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
   .video-grid { grid-template-columns: 1fr; }
+  .clients-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .hero { padding: 64px 0 72px; }
   .about, .preview, .contact { padding: 64px 0; }

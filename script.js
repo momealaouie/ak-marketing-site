@@ -26,6 +26,22 @@ const CATEGORY_LABELS = {
   brand: "Brand Films",
 };
 
+/* ---------------- Keyword marquee: fill the track ----------------
+   The loop animates the track from 0 to -50%, so the track must be
+   two identical halves, each at least as wide as the viewport.
+   Clone the keyword sequence until that holds — no empty gaps. */
+const marqueeTrack = document.querySelector(".marquee-track");
+if (marqueeTrack) {
+  const firstSeq = marqueeTrack.querySelector(".marquee-seq");
+  const seqWidth = firstSeq.offsetWidth;
+  if (seqWidth > 0) {
+    const perHalf = Math.max(1, Math.ceil((window.innerWidth * 1.25) / seqWidth));
+    while (marqueeTrack.children.length < perHalf * 2) {
+      marqueeTrack.appendChild(firstSeq.cloneNode(true));
+    }
+  }
+}
+
 /* ---------------- Scroll reveal ---------------- */
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
