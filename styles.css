@@ -204,24 +204,26 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 /* ---------------- Featured clients ---------------- */
 .clients { margin-bottom: 56px; }
 
-.clients-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.clients-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
 
 .client-card {
-  display: flex; align-items: center; gap: 14px;
-  padding: 20px 22px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  padding: 16px; border: 1px solid rgba(255, 255, 255, 0.12);
+  text-decoration: none; color: var(--white); transition: border-color 0.2s ease;
 }
+.client-card:hover { border-color: var(--green-light); }
 
+.client-name { font-weight: 700; font-size: 0.8rem; text-align: center; text-transform: uppercase; letter-spacing: 0.06em; }
+
+.client-logo-img { width: 100%; height: 84px; object-fit: contain; background: #0A0A0A; padding: 10px; }
+.client-card.light .client-logo-img { background: var(--white); }
+
+/* Fallback monogram shown by script.js until the logo file exists */
 .client-logo {
-  width: 44px; height: 44px; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 84px; display: flex; align-items: center; justify-content: center;
   background: var(--green); color: var(--white);
-  font-weight: 700; font-size: 0.95rem; letter-spacing: 0.05em;
+  font-weight: 700; font-size: 1.1rem; letter-spacing: 0.08em;
 }
-
-.client-card img.client-logo { object-fit: contain; background: var(--white); }
-
-.client-name { font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; }
 
 /* ---------------- Keyword marquee ---------------- */
 .marquee {
@@ -565,6 +567,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 .stats-grid > :nth-child(2), .process-grid > :nth-child(2), .clients-grid > :nth-child(2) { --d: 0.08s; }
 .stats-grid > :nth-child(3), .process-grid > :nth-child(3), .clients-grid > :nth-child(3) { --d: 0.16s; }
 .stats-grid > :nth-child(4), .process-grid > :nth-child(4), .clients-grid > :nth-child(4) { --d: 0.24s; }
+.clients-grid > :nth-child(5) { --d: 0.32s; }
 .reviews-grid > :nth-child(2) { --d: 0.1s; }
 .reviews-grid > :nth-child(3) { --d: 0.2s; }
 
@@ -589,7 +592,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   .stats-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
   .video-grid { grid-template-columns: 1fr; }
-  .clients-grid { grid-template-columns: 1fr; }
+  .clients-grid { grid-template-columns: repeat(2, 1fr); }
   .form-row { grid-template-columns: 1fr; }
   .hero { padding: 64px 0 72px; }
   .about, .preview, .contact { padding: 64px 0; }

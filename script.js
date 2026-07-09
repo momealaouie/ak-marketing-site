@@ -98,6 +98,18 @@ document.querySelectorAll(".tab").forEach((tab) => {
 
 renderVideos("all");
 
+/* ---------------- Client logos: fallback to initials if file is missing ---------------- */
+document.querySelectorAll(".client-logo-img").forEach((img) => {
+  img.addEventListener("error", () => {
+    const initials = img.alt.replace(" logo", "").split(" ")
+      .map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+    const span = document.createElement("span");
+    span.className = "client-logo";
+    span.textContent = initials;
+    img.replaceWith(span);
+  });
+});
+
 /* ---------------- Animated hero stats ---------------- */
 function animateCount(el) {
   const target = parseFloat(el.dataset.count);
