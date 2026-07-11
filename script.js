@@ -46,6 +46,49 @@ if (marqueeTrack) {
   }
 }
 
+/* ---------------- Scroll-scrubbed hero video ----------------
+   The section is 300vh tall with a sticky full-screen video.
+   Scroll progress through the section maps to video time:
+   scroll down = play forward, scroll up = rewind. The section
+   stays hidden until assets/hero.mp4 loads. */
+const scrubSection = document.getElementById("scrubSection");
+const scrubVideo = document.getElementById("scrubVideo");
+if (scrubSection && scrubVideo) {
+  const initScrub = () => {
+    scrubSection.hidden = false;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion || !scrubVideo.duration) return; // show first frame, no scrubbing
+
+    let targetTime = 0;
+    let currentTime = 0;
+
+    const updateTarget = () => {
+      const rect = scrubSection.getBoundingClientRect();
+      const scrollable = rect.height - window.innerHeight;
+      const progress = Math.min(1, Math.max(0, -rect.top / scrollable));
+      targetTime = progress * scrubVideo.duration;
+    };
+
+    // Ease toward the target each frame for a smooth scrub
+    const tick = () => {
+      currentTime += (targetTime - currentTime) * 0.14;
+      if (Math.abs(scrubVideo.currentTime - currentTime) > 0.01) {
+        scrubVideo.currentTime = currentTime;
+      }
+      requestAnimationFrame(tick);
+    };
+
+    window.addEventListener("scroll", updateTarget, { passive: true });
+    window.addEventListener("resize", updateTarget, { passive: true });
+    updateTarget();
+    requestAnimationFrame(tick);
+  };
+  // Metadata may already be loaded by the time this script runs
+  if (scrubVideo.readyState >= 1) initScrub();
+  else scrubVideo.addEventListener("loadedmetadata", initScrub, { once: true });
+  scrubVideo.addEventListener("error", () => { scrubSection.hidden = true; });
+}
+
 /* ---------------- Scroll reveal ---------------- */
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {

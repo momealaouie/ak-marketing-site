@@ -42,6 +42,20 @@
     </nav>
   </header>
 
+  <!-- ============ SCROLL-SCRUBBED HERO VIDEO ============
+       Drop the video file at assets/hero.mp4 (muted, no audio needed).
+       The section stays hidden until the file exists. Scrolling down
+       plays the video forward; scrolling up rewinds it. -->
+  <section class="scrub" id="scrubSection" hidden>
+    <div class="scrub-sticky">
+      <video id="scrubVideo" src="assets/hero.mp4" muted playsinline preload="auto"></video>
+      <div class="scrub-overlay">
+        <p class="scrub-tagline">Production&nbsp;·&nbsp;Marketing&nbsp;·&nbsp;Advertising</p>
+        <p class="scrub-hint">Scroll ↓</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ 1. HERO: REVIEWS & RESULTS ============ -->
   <section id="results" class="hero">
     <div class="container">
@@ -84,16 +98,18 @@
       </div>
 
       <div class="clients">
-        <p class="eyebrow reveal">Featured Clients</p>
+        <div class="clients-head">
+          <p class="eyebrow reveal">Featured Clients</p>
+          <!-- Placeholder count — update with the real number of countries -->
+          <p class="clients-countries reveal">Produced in 6+ countries</p>
+        </div>
+
+        <p class="clients-row-label reveal">Local</p>
         <div class="clients-grid">
-          <!-- Logo files: assets/clients/<name>.png — .light class = white logo background -->
-          <a class="client-card reveal light" href="https://www.qvantum.com/sv/" target="_blank" rel="noopener">
-            <span class="client-name">Qvantum</span>
-            <img class="client-logo-img" src="assets/clients/qvantum.png" alt="Qvantum logo" loading="lazy">
-          </a>
-          <a class="client-card reveal" href="https://www.hh.se/" target="_blank" rel="noopener">
-            <span class="client-name">Högskolan i Halmstad</span>
-            <img class="client-logo-img" src="assets/clients/hh.svg" alt="Högskolan i Halmstad logo" loading="lazy">
+          <!-- Logo files: assets/clients/<name> — .light class = white logo background -->
+          <a class="client-card reveal light" href="https://www.hh.se/english.html" target="_blank" rel="noopener">
+            <span class="client-name">Halmstad University</span>
+            <img class="client-logo-img" src="assets/clients/hh-en.svg" alt="Halmstad University logo" loading="lazy">
           </a>
           <a class="client-card reveal" href="https://www.dc.se/dack" target="_blank" rel="noopener">
             <span class="client-name">Däckcentrum</span>
@@ -106,6 +122,14 @@
           <a class="client-card reveal" href="https://www.restaurangvenedig.se/" target="_blank" rel="noopener">
             <span class="client-name">Venedig Restaurang</span>
             <img class="client-logo-img zoom" src="assets/clients/venedig.webp" alt="Venedig Restaurang logo" loading="lazy">
+          </a>
+        </div>
+
+        <p class="clients-row-label reveal">International Clients</p>
+        <div class="clients-grid">
+          <a class="client-card reveal light" href="https://www.qvantum.com/sv/" target="_blank" rel="noopener">
+            <span class="client-name">Qvantum</span>
+            <img class="client-logo-img" src="assets/clients/qvantum.png" alt="Qvantum logo" loading="lazy">
           </a>
         </div>
       </div>
