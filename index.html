@@ -23,9 +23,14 @@
       <span class="brand-name">AK&nbsp;MEDIA</span>
     </a>
     <nav class="site-nav">
-      <a href="#results">Results</a>
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
+      <a href="#results" data-i18n="nav.results">Results</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#work" data-i18n="nav.work">Work</a>
+      <div class="lang-switch" aria-label="Language">
+        <button type="button" data-lang="en" class="active">EN</button>
+        <span class="sep">/</span>
+        <button type="button" data-lang="sv">SV</button>
+      </div>
       <a class="nav-social" href="https://www.instagram.com/ak.mediaz" target="_blank" rel="noopener" aria-label="AK Media on Instagram">
         <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="3" y="3" width="18" height="18"/>
@@ -38,7 +43,7 @@
           <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
         </svg>
       </a>
-      <a href="#contact" class="nav-cta">Contact us</a>
+      <a href="#contact" class="nav-cta" data-i18n="nav.contact">Contact us</a>
     </nav>
   </header>
 
@@ -48,12 +53,12 @@
   <section class="hero-split">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow reveal">Film production &amp; marketing — Halmstad</p>
-        <h1 class="reveal">We make<br>brands<br><span class="accent">move.</span></h1>
-        <p class="hero-sub reveal">We produce films for businesses and make them perform — on social media and at commercial level.</p>
+        <p class="eyebrow reveal" data-i18n="hero.eyebrow">Film production &amp; marketing</p>
+        <h1 class="reveal" data-i18n="hero.title">We make<br>brands<br><span class="accent">move.</span></h1>
+        <p class="hero-sub reveal" data-i18n="hero.sub">We produce films for businesses and make them perform — on social media and at commercial level.</p>
         <div class="hero-actions reveal">
-          <a href="#contact" class="btn btn-green">Book a call</a>
-          <a href="#work" class="btn btn-ghost">See selected work</a>
+          <a href="#contact" class="btn btn-green" data-i18n="hero.cta1">Book a call</a>
+          <a href="#work" class="btn btn-ghost" data-i18n="hero.cta2">See selected work</a>
         </div>
       </div>
 
@@ -90,52 +95,52 @@
   <!-- ============ 1. RESULTS: STATS, REVIEWS & CLIENTS ============ -->
   <section id="results" class="hero">
     <div class="container">
-      <p class="eyebrow reveal">Results</p>
-      <h2 class="reveal">Results that speak<br>for themselves.</h2>
+      <p class="eyebrow reveal" data-i18n="results.eyebrow">Results</p>
+      <h2 class="reveal" data-i18n="results.title">Results that speak<br>for themselves.</h2>
 
-      <!-- NOTE: placeholder numbers — replace with real figures (see README) -->
+      <!-- NOTE: update with real figures as they grow (see README) -->
       <div class="stats-grid">
         <div class="stat-block reveal">
           <span class="stat-number" data-count="150">0</span><span class="stat-suffix">+</span>
-          <p class="stat-label">Films produced</p>
+          <p class="stat-label" data-i18n="stats.films">Films produced</p>
         </div>
         <div class="stat-block reveal">
-          <span class="stat-number" data-count="5">0</span><span class="stat-suffix">M+</span>
-          <p class="stat-label">Views generated</p>
+          <span class="stat-number" data-count="4">0</span><span class="stat-suffix">M+</span>
+          <p class="stat-label" data-i18n="stats.views">Views generated</p>
         </div>
         <div class="stat-block reveal">
-          <span class="stat-number" data-count="30">0</span><span class="stat-suffix">+</span>
-          <p class="stat-label">Brands worked with</p>
+          <span class="stat-number" data-count="25">0</span><span class="stat-suffix">+</span>
+          <p class="stat-label" data-i18n="stats.brands">Brands worked with</p>
         </div>
         <div class="stat-block reveal">
-          <span class="stat-number" data-count="4.2">0</span><span class="stat-suffix">x</span>
-          <p class="stat-label">Average ROAS</p>
+          <span class="stat-number" data-count="10">0</span><span class="stat-suffix">x</span>
+          <p class="stat-label" data-i18n="stats.roas">Average ROAS</p>
         </div>
       </div>
 
       <div class="reviews-grid">
         <blockquote class="review-card reveal">
-          <p>"AK took our brand from invisible to 1.2 million views in three months. The best investment we've made."</p>
-          <footer>— Anna Lindqvist, CEO, Nordic Wear</footer>
+          <p data-i18n="r1.text">"AK took our brand from invisible to 1.2 million views in three months. The best investment we've made."</p>
+          <footer data-i18n="r1.author">— Anna Lindqvist, CEO, Nordic Wear</footer>
         </blockquote>
         <blockquote class="review-card reveal">
-          <p>"Professional, fast and above all: they deliver numbers, not just pretty videos."</p>
-          <footer>— Marcus Berg, Founder, FitLab</footer>
+          <p data-i18n="r2.text">"Professional, fast and above all: they deliver numbers, not just pretty videos."</p>
+          <footer data-i18n="r2.author">— Marcus Berg, Founder, FitLab</footer>
         </blockquote>
         <blockquote class="review-card reveal">
-          <p>"We've tried three agencies before. AK is the first one that actually understands our audience."</p>
-          <footer>— Sara Öman, CMO, Kavia Bygg</footer>
+          <p data-i18n="r3.text">"We've tried three agencies before. AK is the first one that actually understands our audience."</p>
+          <footer data-i18n="r3.author">— Sara Öman, CMO, Kavia Bygg</footer>
         </blockquote>
       </div>
 
       <div class="clients">
         <div class="clients-head">
-          <p class="eyebrow reveal">Featured Clients</p>
+          <p class="eyebrow reveal" data-i18n="clients.eyebrow">Featured Clients</p>
           <!-- Placeholder count — update with the real number of countries -->
-          <p class="clients-countries reveal">Produced in 6+ countries</p>
+          <p class="clients-countries reveal" data-i18n="clients.countries">Produced in 6+ countries</p>
         </div>
 
-        <p class="clients-row-label reveal">Local</p>
+        <p class="clients-row-label reveal" data-i18n="clients.local">Local</p>
         <div class="clients-grid">
           <!-- Logo files: assets/clients/<name> — .light class = white logo background -->
           <a class="client-card reveal light" href="https://www.hh.se/english.html" target="_blank" rel="noopener">
@@ -156,7 +161,7 @@
           </a>
         </div>
 
-        <p class="clients-row-label reveal">International Clients</p>
+        <p class="clients-row-label reveal" data-i18n="clients.intl">International Clients</p>
         <div class="clients-grid">
           <a class="client-card reveal light" href="https://www.qvantum.com/sv/" target="_blank" rel="noopener">
             <span class="client-name">Qvantum</span>
@@ -164,43 +169,42 @@
           </a>
         </div>
       </div>
-
     </div>
   </section>
 
   <!-- ============ 2. ABOUT & HOW WE WORK ============ -->
   <section id="about" class="about">
     <div class="container">
-      <p class="eyebrow reveal">About us</p>
-      <h2 class="reveal">We produce films.<br>We make them perform.</h2>
-      <p class="about-text reveal">
+      <p class="eyebrow reveal" data-i18n="about.eyebrow">About us</p>
+      <h2 class="reveal" data-i18n="about.title">We produce films.<br>We make them perform.</h2>
+      <p class="about-text reveal" data-i18n="about.text">
         AK Media is a results-driven agency specializing in film production and marketing
         for businesses. We produce commercial-grade video content and put it to work —
         across social media and commercial channels — with a clear goal behind every frame,
         measured against real numbers.
       </p>
 
-      <h3 class="process-heading reveal">How we work</h3>
+      <h3 class="process-heading reveal" data-i18n="about.how">How we work</h3>
       <div class="process-grid">
         <div class="process-step reveal">
           <span class="step-number">01</span>
-          <h4>Strategy</h4>
-          <p>We analyze your audience, competitors and channels — then set a plan with clear goals.</p>
+          <h4 data-i18n="step1.t">Strategy</h4>
+          <p data-i18n="step1.p">We analyze your audience, competitors and channels — then set a plan with clear goals.</p>
         </div>
         <div class="process-step reveal">
           <span class="step-number">02</span>
-          <h4>Production</h4>
-          <p>Our team produces tailored, commercial-grade films for your brand — fast and in high quality.</p>
+          <h4 data-i18n="step2.t">Production</h4>
+          <p data-i18n="step2.p">Our team produces tailored, commercial-grade films for your brand — fast and in high quality.</p>
         </div>
         <div class="process-step reveal">
           <span class="step-number">03</span>
-          <h4>Distribution</h4>
-          <p>We publish and advertise at the right time, in the right channel — from social media to commercial campaigns.</p>
+          <h4 data-i18n="step3.t">Distribution</h4>
+          <p data-i18n="step3.p">We publish and advertise at the right time, in the right channel — from social media to commercial campaigns.</p>
         </div>
         <div class="process-step reveal">
           <span class="step-number">04</span>
-          <h4>Analysis</h4>
-          <p>Every month you get a report with numbers that matter — and we adjust the strategy accordingly.</p>
+          <h4 data-i18n="step4.t">Analysis</h4>
+          <p data-i18n="step4.p">Every month you get a report with numbers that matter — and we adjust the strategy accordingly.</p>
         </div>
       </div>
     </div>
@@ -209,15 +213,15 @@
   <!-- ============ 3. PREVIEW: SELECTED WORK ============ -->
   <section id="work" class="preview">
     <div class="container">
-      <p class="eyebrow reveal">Selected work</p>
-      <h2 class="reveal">A curated look at what we do.</h2>
-      <p class="preview-sub reveal">A hand-picked selection — not everything we make, just the work we're most proud of.</p>
+      <p class="eyebrow reveal" data-i18n="work.eyebrow">Selected work</p>
+      <h2 class="reveal" data-i18n="work.title">A curated look at what we do.</h2>
+      <p class="preview-sub reveal" data-i18n="work.sub">A hand-picked selection — not everything we make, just the work we're most proud of.</p>
 
       <div class="tabs reveal" role="tablist">
-        <button class="tab active" role="tab" data-category="all">All</button>
-        <button class="tab" role="tab" data-category="reels">Reels</button>
-        <button class="tab" role="tab" data-category="ads">Ads</button>
-        <button class="tab" role="tab" data-category="brand">Brand Films</button>
+        <button class="tab active" role="tab" data-category="all" data-i18n="tab.all">All</button>
+        <button class="tab" role="tab" data-category="commercial" data-i18n="tab.commercial">Commercial shoots</button>
+        <button class="tab" role="tab" data-category="interviews" data-i18n="tab.interviews">Interviews</button>
+        <button class="tab" role="tab" data-category="location" data-i18n="tab.location">On location</button>
       </div>
 
       <div class="video-grid" id="videoGrid">
@@ -225,7 +229,7 @@
       </div>
 
       <div class="work-socials reveal">
-        <p>Watch the full feed</p>
+        <p data-i18n="work.feed">Watch the full feed</p>
         <a class="social-btn" href="https://www.instagram.com/ak.mediaz" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="3" y="3" width="18" height="18"/>
@@ -247,9 +251,9 @@
   <!-- ============ 4. CONTACT FORM ============ -->
   <section id="contact" class="contact">
     <div class="container">
-      <p class="eyebrow reveal">Contact</p>
-      <h2 class="reveal">Ready to grow?</h2>
-      <p class="contact-sub reveal">Fill in the form and we'll get back to you within 24 hours.</p>
+      <p class="eyebrow reveal" data-i18n="contact.eyebrow">Contact</p>
+      <h2 class="reveal" data-i18n="contact.title">Ready to grow?</h2>
+      <p class="contact-sub reveal" data-i18n="contact.sub">Fill in the form and we'll get back to you within 24 hours.</p>
 
       <form id="contactForm" class="reveal" action="https://formsubmit.co/akram.hameed8@icloud.com" method="POST" novalidate>
         <input type="hidden" name="_subject" value="New inquiry — AK Media website">
@@ -258,38 +262,38 @@
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
         <div class="form-row">
           <div class="form-field">
-            <label for="name">Name *</label>
+            <label for="name" data-i18n="f.name">Name *</label>
             <input type="text" id="name" name="name" required autocomplete="name">
-            <span class="field-error" data-for="name">Please enter your name.</span>
+            <span class="field-error" data-for="name" data-i18n="e.name">Please enter your name.</span>
           </div>
           <div class="form-field">
-            <label for="email">Email *</label>
+            <label for="email" data-i18n="f.email">Email *</label>
             <input type="email" id="email" name="email" required autocomplete="email">
-            <span class="field-error" data-for="email">Please enter a valid email address.</span>
+            <span class="field-error" data-for="email" data-i18n="e.email">Please enter a valid email address.</span>
           </div>
         </div>
         <div class="form-row">
           <div class="form-field">
-            <label for="phone">Phone *</label>
+            <label for="phone" data-i18n="f.phone">Phone *</label>
             <input type="tel" id="phone" name="phone" required autocomplete="tel" inputmode="tel" maxlength="20" placeholder="+46 70 123 45 67">
-            <span class="field-error" data-for="phone">Please enter a valid phone number (7–15 digits).</span>
+            <span class="field-error" data-for="phone" data-i18n="e.phone">Please enter a valid phone number (7–15 digits).</span>
           </div>
           <div class="form-field">
-            <label for="company">Company</label>
+            <label for="company" data-i18n="f.company">Company</label>
             <input type="text" id="company" name="company" autocomplete="organization">
           </div>
         </div>
         <div class="form-field">
-          <label for="message">Message *</label>
+          <label for="message" data-i18n="f.message">Message *</label>
           <textarea id="message" name="message" rows="5" required></textarea>
-          <span class="field-error" data-for="message">Please write a message.</span>
+          <span class="field-error" data-for="message" data-i18n="e.message">Please write a message.</span>
         </div>
-        <button type="submit" class="btn btn-green">Send message</button>
-        <p class="form-success" id="formSuccess" hidden>Thank you! We'll get back to you within 24 hours.</p>
-        <p class="form-error" id="formError" hidden>Something went wrong — please try again, or DM us on Instagram instead.</p>
+        <button type="submit" class="btn btn-green" data-i18n="f.send">Send message</button>
+        <p class="form-success" id="formSuccess" hidden data-i18n="f.success">Thank you! We'll get back to you within 24 hours.</p>
+        <p class="form-error" id="formError" hidden data-i18n="f.error">Something went wrong — please try again, or DM us on Instagram instead.</p>
       </form>
 
-      <p class="contact-instagram reveal">
+      <p class="contact-instagram reveal" data-i18n="contact.social">
         Prefer social? DM us on
         <a href="https://www.instagram.com/ak.mediaz" target="_blank" rel="noopener">Instagram</a>
         or
@@ -309,14 +313,14 @@
 
       <div class="footer-cols">
         <div class="footer-col">
-          <p class="footer-heading">Site</p>
-          <a href="#results">Results</a>
-          <a href="#about">About</a>
-          <a href="#work">Work</a>
-          <a href="#contact">Contact</a>
+          <p class="footer-heading" data-i18n="footer.site">Site</p>
+          <a href="#results" data-i18n="nav.results">Results</a>
+          <a href="#about" data-i18n="nav.about">About</a>
+          <a href="#work" data-i18n="nav.work">Work</a>
+          <a href="#contact" data-i18n="footer.contact">Contact</a>
         </div>
         <div class="footer-col">
-          <p class="footer-heading">Community</p>
+          <p class="footer-heading" data-i18n="footer.community">Community</p>
           <a href="https://www.instagram.com/ak.mediaz" target="_blank" rel="noopener">Instagram</a>
           <a href="https://www.tiktok.com/@ak.mediaz" target="_blank" rel="noopener">TikTok</a>
           <a href="https://www.linkedin.com/company/ak-mediaz/" target="_blank" rel="noopener">LinkedIn</a>

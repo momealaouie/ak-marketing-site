@@ -111,6 +111,16 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 .nav-social { display: inline-flex; align-items: center; padding: 6px; } /* padding = bigger touch target */
 .nav-social:hover { color: var(--green-light); }
 
+.lang-switch { display: inline-flex; align-items: center; gap: 4px; }
+.lang-switch .sep { opacity: 0.4; font-size: 0.8rem; }
+.lang-switch button {
+  background: none; border: none; cursor: pointer; padding: 6px 2px;
+  color: var(--white); font-family: var(--font);
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em;
+  opacity: 0.5; border-bottom: 2px solid transparent;
+}
+.lang-switch button.active { opacity: 1; border-bottom-color: var(--green-light); }
+
 .nav-cta { background: var(--green); padding: 10px 22px; font-weight: 700; opacity: 1 !important; }
 .nav-cta:hover { background: var(--green-dark); }
 
@@ -425,11 +435,8 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 }
 
 .form-field label {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 8px;
+  font-size: 0.8rem; font-weight: 700; margin-bottom: 8px;
+  text-transform: uppercase; letter-spacing: 0.08em;
 }
 
 .form-field input,
@@ -452,12 +459,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   border-color: var(--green);
 }
 
-.field-error {
-  display: none;
-  color: #A03030;
-  font-size: 0.8rem;
-  margin-top: 6px;
-}
+.field-error { display: none; color: #A03030; font-size: 0.8rem; margin-top: 6px; }
 
 .form-field.invalid .field-error { display: block; }
 .form-field.invalid input,
