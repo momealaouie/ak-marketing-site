@@ -126,14 +126,14 @@ function applyLang(lang) {
     const value = dict[el.dataset.i18n];
     if (value !== undefined) el.innerHTML = value;
   });
-  document.querySelectorAll(".lang-switch button").forEach((btn) => {
-    btn.classList.toggle("active", btn.dataset.lang === lang);
-  });
+  // The toggle shows the language you switch TO
+  const toggle = document.getElementById("langToggle");
+  if (toggle) toggle.textContent = lang === "en" ? "SV" : "EN";
   renderVideos(activeCategory());
 }
 
-document.querySelectorAll(".lang-switch button").forEach((btn) => {
-  btn.addEventListener("click", () => applyLang(btn.dataset.lang));
+document.getElementById("langToggle").addEventListener("click", () => {
+  applyLang(LANG === "en" ? "sv" : "en");
 });
 
 /* ---------------- Keyword marquee: fill the track ----------------
@@ -156,36 +156,36 @@ if (marqueeTrack) {
   }
 }
 
-/* ---------------- Hero reel: scroll scrubs the video ----------------
-   Scrolling down plays the reel forward; scrolling up rewinds it.
-   The timecode readout follows playback like a camera UI. */
-const reelVideo = document.getElementById("reelVideo");
-const reelTime = document.getElementById("reelTime");
-if (reelVideo && reelTime) {
-  const fmtTimecode = (t) => {
-    const mm = String(Math.floor(t / 60)).padStart(2, "0");
-    const ss = String(Math.floor(t % 60)).padStart(2, "0");
-    const ff = String(Math.floor((t % 1) * 30)).padStart(2, "0");
-    return `${mm}:${ss}:${ff}`;
-  };
+/* ---------------- Reels: scroll scrubs the video ----------------
+   Scrolling down plays a reel forward; scrolling up rewinds it.
+   The timecode readout follows playback like a camera UI.
+   Reel files are encoded all-intra (every frame a keyframe) so
+   seeking is instant — that is what keeps the scrub judder-free. */
+const fmtTimecode = (t) => {
+  const mm = String(Math.floor(t / 60)).padStart(2, "0");
+  const ss = String(Math.floor(t % 60)).padStart(2, "0");
+  const ff = String(Math.floor((t % 1) * 30)).padStart(2, "0");
+  return `${mm}:${ss}:${ff}`;
+};
 
-  const initReel = () => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !reelVideo.duration) return;
+function setupReel(videoId, timeId, progressFn) {
+  const video = document.getElementById(videoId);
+  const timeEl = document.getElementById(timeId);
+  if (!video || !timeEl) return;
+
+  const init = () => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !video.duration) return;
     let targetTime = 0;
     let currentTime = 0;
 
-    const updateTarget = () => {
-      // The first ~1.2 screens of scroll map to the full clip
-      const progress = Math.min(1, window.scrollY / (window.innerHeight * 1.2));
-      targetTime = progress * reelVideo.duration;
-    };
+    const updateTarget = () => { targetTime = progressFn(video) * video.duration; };
 
     // Ease toward the target each frame for a smooth scrub
     const tick = () => {
-      currentTime += (targetTime - currentTime) * 0.14;
-      if (Math.abs(reelVideo.currentTime - currentTime) > 0.01) {
-        reelVideo.currentTime = currentTime;
-        reelTime.textContent = fmtTimecode(currentTime);
+      currentTime += (targetTime - currentTime) * 0.18;
+      if (Math.abs(video.currentTime - currentTime) > 0.02) {
+        video.currentTime = currentTime;
+        timeEl.textContent = fmtTimecode(currentTime);
       }
       requestAnimationFrame(tick);
     };
@@ -196,9 +196,20 @@ if (reelVideo && reelTime) {
     requestAnimationFrame(tick);
   };
   // Metadata may already be loaded by the time this script runs
-  if (reelVideo.readyState >= 1) initReel();
-  else reelVideo.addEventListener("loadedmetadata", initReel, { once: true });
+  if (video.readyState >= 1) init();
+  else video.addEventListener("loadedmetadata", init, { once: true });
 }
+
+// Hero reel: the first ~1.2 screens of scroll map to the full clip
+setupReel("reelVideo", "reelTime", () =>
+  Math.min(1, window.scrollY / (window.innerHeight * 1.2)));
+
+// About reel: plays as the frame travels through the viewport
+setupReel("aboutReelVideo", "aboutReelTime", (video) => {
+  const rect = video.closest(".reel").getBoundingClientRect();
+  const vh = window.innerHeight;
+  return Math.min(1, Math.max(0, (vh - rect.top) / (vh + rect.height)));
+});
 
 /* ---------------- Scroll reveal ---------------- */
 const revealObserver = new IntersectionObserver((entries) => {
