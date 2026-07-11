@@ -10,6 +10,17 @@
    category: "commercial" | "interviews" | "location"
    ---------------------------------------------------------------- */
 const VIDEOS = [
+  // Reels (portrait, cars & vertical edits)
+  { title: "Däckcentrum, Porsche 718 Spyder", category: "reels", src: "assets/videos/porsche-dackcentrum.mp4" },
+  { title: "Tom Auto AB, Mercedes-AMG C63", category: "reels", src: "assets/videos/tomauto-c63.mp4" },
+  { title: "Range Rover Sport", category: "reels", src: "assets/videos/rangerover-reel.mp4" },
+  { title: "Helsingborg, City reel", category: "reels", src: "assets/videos/helsingborg-reel.mp4" },
+  // Commercial shoots (landscape — rendered as wide 16:9 cards)
+  { title: "Helsingborg, City film", category: "commercial", src: "assets/videos/helsingborg-cityfilm.mp4", wide: true },
+  { title: "Halmstad University, Campus aerial", category: "commercial", src: "assets/videos/hh-campus-aerial.mp4", wide: true },
+  { title: "Industrial district, Aerial", category: "commercial", src: "assets/videos/industrial-aerial.mp4", wide: true },
+  { title: "Custom wheels, Detail", category: "commercial", src: "assets/videos/custom-wheels.mp4", wide: true },
+  // BTS
   { title: "Burger Mansion, Burger Franchise", category: "bts", src: "assets/videos/burgermansion-kitchen.mp4" },
   { title: "Däckcentrum, Premium Wheel & Tire", category: "bts", src: "assets/videos/dackcentrum-showroom.mp4" },
   { title: "Däckcentrum, Premium Wheel & Tire", category: "bts", src: "assets/videos/dackcentrum-wheels.mp4" },
@@ -258,7 +269,7 @@ function renderVideos(category) {
 
   filtered.forEach((video, index) => {
     const card = document.createElement("div");
-    card.className = "video-card reveal";
+    card.className = "video-card reveal" + (video.wide ? " wide" : "");
     card.style.setProperty("--d", `${(index % 4) * 0.08}s`);
 
     // Poster jpg lives next to the mp4 — mobile browsers won't preload
