@@ -10,19 +10,17 @@
    category: "commercial" | "interviews" | "location"
    ---------------------------------------------------------------- */
 const VIDEOS = [
-  { title: "Burger Mansion — Kitchen",  category: "commercial", src: "assets/videos/burgermansion-kitchen.mp4" },
-  { title: "Däckcentrum — Showroom",    category: "commercial", src: "assets/videos/dackcentrum-showroom.mp4" },
-  { title: "Däckcentrum — Wheel wall",  category: "commercial", src: "assets/videos/dackcentrum-wheels.mp4" },
-  { title: "Studio interview",          category: "interviews", src: "assets/videos/studio-interview.mp4" },
-  { title: "On set — Interview",        category: "interviews", src: "assets/videos/onset-interview.mp4" },
-  { title: "Gimbal setup",              category: "location",   src: "assets/videos/gimbal-location.mp4" },
-  { title: "Rain shoot",                category: "location",   src: "assets/videos/rain-shoot.mp4" },
-  { title: "Sports event",              category: "location",   src: "assets/videos/sports-event.mp4" },
+  { title: "Burger Mansion, Burger Franchise", category: "bts", src: "assets/videos/burgermansion-kitchen.mp4" },
+  { title: "Däckcentrum, Premium Wheel & Tire", category: "bts", src: "assets/videos/dackcentrum-showroom.mp4" },
+  { title: "Däckcentrum, Premium Wheel & Tire", category: "bts", src: "assets/videos/dackcentrum-wheels.mp4" },
+  { title: "Ademi AB, Client study", category: "bts", src: "assets/videos/onset-interview.mp4" },
+  { title: "Halmstad University, International department", category: "bts", src: "assets/videos/studio-interview.mp4" },
+  { title: "IBJJF, European Championship", category: "bts", src: "assets/videos/sports-event.mp4" },
 ];
 
 const CATEGORY_LABELS = {
-  en: { commercial: "Commercial shoots", interviews: "Interviews", location: "On location", soon: "Coming soon" },
-  sv: { commercial: "Reklamfilm", interviews: "Intervjuer", location: "På plats", soon: "Kommer snart" },
+  en: { reels: "Reels", commercial: "Commercial shoots", bts: "BTS", soon: "Coming soon" },
+  sv: { reels: "Reels", commercial: "Reklamfilm", bts: "BTS", soon: "Kommer snart" },
 };
 
 /* ----------------------------------------------------------------
@@ -56,7 +54,7 @@ const I18N = {
     "step4.t": "Analysis", "step4.p": "Every month you get a report with numbers that matter — and we adjust the strategy accordingly.",
     "work.eyebrow": "Selected work", "work.title": "A curated look at what we do.",
     "work.sub": "A hand-picked selection — not everything we make, just the work we're most proud of.",
-    "tab.all": "All", "tab.commercial": "Commercial shoots", "tab.interviews": "Interviews", "tab.location": "On location",
+    "tab.all": "All", "tab.reels": "Reels", "tab.commercial": "Commercial shoots", "tab.bts": "BTS",
     "work.feed": "Watch the full feed",
     "contact.eyebrow": "Contact", "contact.title": "Ready to grow?",
     "contact.sub": "Fill in the form and we'll get back to you within 24 hours.",
@@ -95,7 +93,7 @@ const I18N = {
     "step4.t": "Analys", "step4.p": "Varje månad får ni en rapport med siffror som betyder något — och vi justerar strategin därefter.",
     "work.eyebrow": "Utvalda arbeten", "work.title": "Ett kurerat urval av det vi gör.",
     "work.sub": "Ett handplockat urval — inte allt vi gör, bara det vi är mest stolta över.",
-    "tab.all": "Alla", "tab.commercial": "Reklamfilm", "tab.interviews": "Intervjuer", "tab.location": "På plats",
+    "tab.all": "Alla", "tab.reels": "Reels", "tab.commercial": "Reklamfilm", "tab.bts": "BTS",
     "work.feed": "Se hela flödet",
     "contact.eyebrow": "Kontakt", "contact.title": "Redo att växa?",
     "contact.sub": "Fyll i formuläret så återkommer vi inom 24 timmar.",
