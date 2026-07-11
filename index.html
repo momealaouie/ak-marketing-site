@@ -61,7 +61,7 @@
 
       <div class="reel reveal">
         <div class="reel-bar"><span class="rec"><span class="rec-dot"></span>REC</span><span id="reelTime">00:00:00</span></div>
-        <video id="reelVideo" src="assets/hero.mp4" muted playsinline preload="auto" autoplay loop></video>
+        <video id="reelVideo" src="assets/hero.mp4" poster="assets/hero.jpg" muted playsinline preload="auto" autoplay loop></video>
         <div class="reel-bar reel-bar-bottom"><span>AK Media — BTS</span><span>9:16</span></div>
       </div>
     </div>
@@ -175,7 +175,8 @@
       <div class="about-grid">
         <div class="reel reel-about reveal">
           <div class="reel-bar"><span class="rec"><span class="rec-dot"></span>REC</span><span id="aboutReelTime">00:00:00</span></div>
-          <video id="aboutReelVideo" src="assets/about-reel.mp4" muted playsinline preload="auto"></video>
+          <!-- autoplay is a mobile loading trick — script.js pauses it and scrubs instead -->
+          <video id="aboutReelVideo" src="assets/about-reel.mp4" poster="assets/about-reel.jpg" muted playsinline preload="auto" autoplay></video>
           <div class="reel-bar reel-bar-bottom"><span>AK Media — On set</span><span>9:16</span></div>
         </div>
         <div class="about-copy">

@@ -183,6 +183,9 @@ function setupReel(videoId, timeId, progressFn) {
   if (!video || !timeEl) return;
 
   const init = () => {
+    // The video carries an autoplay attribute only to force mobile
+    // browsers to actually load it — scrubbing takes over from here
+    video.pause();
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !video.duration) return;
     let targetTime = 0;
     let currentTime = 0;
@@ -260,8 +263,10 @@ function renderVideos(category) {
     card.className = "video-card reveal";
     card.style.setProperty("--d", `${(index % 4) * 0.08}s`);
 
+    // Poster jpg lives next to the mp4 — mobile browsers won't preload
+    // video frames, so the poster is what makes cards render there
     const media = video.src
-      ? `<video src="${video.src}" controls preload="metadata" playsinline></video>`
+      ? `<video src="${video.src}" poster="${video.src.replace(".mp4", ".jpg")}" controls preload="metadata" playsinline></video>`
       : `<div class="video-placeholder"><span class="play-icon"></span><span>${labels.soon}</span></div>`;
 
     card.innerHTML = `
