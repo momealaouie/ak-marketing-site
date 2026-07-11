@@ -126,9 +126,9 @@ function applyLang(lang) {
     const value = dict[el.dataset.i18n];
     if (value !== undefined) el.innerHTML = value;
   });
-  // The toggle shows the language you switch TO
+  // One EN/SV button; the active language is bold
   const toggle = document.getElementById("langToggle");
-  if (toggle) toggle.textContent = lang === "en" ? "SV" : "EN";
+  if (toggle) toggle.innerHTML = lang === "en" ? "<b>EN</b><span>/</span>SV" : "EN<span>/</span><b>SV</b>";
   renderVideos(activeCategory());
 }
 
@@ -136,23 +136,32 @@ document.getElementById("langToggle").addEventListener("click", () => {
   applyLang(LANG === "en" ? "sv" : "en");
 });
 
-/* ---------------- Keyword marquee: fill the track ----------------
-   The loop animates the track from 0 to -50%, so the track must be
-   two identical halves, each at least as wide as the viewport.
-   Clone the keyword sequence until that holds — no empty gaps. */
-const MARQUEE_SPEED = 40; // pixels per second — lower = slower
+/* ---------------- Keyword marquee: driven by scroll ----------------
+   The track is two identical halves (cloned to cover any screen), and
+   its position follows the page scroll: scroll down = words move left,
+   scroll up = words move back. Wraps seamlessly at the halfway point. */
+const MARQUEE_FACTOR = 0.5; // marquee pixels per scrolled pixel
 const marqueeTrack = document.querySelector(".marquee-track");
 if (marqueeTrack) {
   const firstSeq = marqueeTrack.querySelector(".marquee-seq");
   const seqWidth = firstSeq.offsetWidth;
-  if (seqWidth > 0) {
+  if (seqWidth > 0 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const perHalf = Math.max(1, Math.ceil((window.innerWidth * 1.25) / seqWidth));
     while (marqueeTrack.children.length < perHalf * 2) {
       marqueeTrack.appendChild(firstSeq.cloneNode(true));
     }
-    // Constant pixel speed regardless of how many clones the screen needed
     const halfWidth = seqWidth * (marqueeTrack.children.length / 2);
-    marqueeTrack.style.animationDuration = `${Math.round(halfWidth / MARQUEE_SPEED)}s`;
+    let target = 0;
+    let current = 0;
+    const update = () => { target = window.scrollY * MARQUEE_FACTOR; };
+    const tick = () => {
+      current += (target - current) * 0.12;
+      marqueeTrack.style.transform = `translateX(${-(current % halfWidth)}px)`;
+      requestAnimationFrame(tick);
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+    requestAnimationFrame(tick);
   }
 }
 
@@ -200,9 +209,22 @@ function setupReel(videoId, timeId, progressFn) {
   else video.addEventListener("loadedmetadata", init, { once: true });
 }
 
-// Hero reel: the first ~1.2 screens of scroll map to the full clip
-setupReel("reelVideo", "reelTime", () =>
-  Math.min(1, window.scrollY / (window.innerHeight * 1.2)));
+// Hero reel: plays continuously (autoplay + loop); the timecode
+// readout just follows playback like a camera UI
+const heroVideo = document.getElementById("reelVideo");
+const heroTime = document.getElementById("reelTime");
+if (heroVideo && heroTime) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    heroVideo.removeAttribute("autoplay");
+    heroVideo.pause();
+  } else {
+    const tickTC = () => {
+      heroTime.textContent = fmtTimecode(heroVideo.currentTime || 0);
+      requestAnimationFrame(tickTC);
+    };
+    requestAnimationFrame(tickTC);
+  }
+}
 
 // About reel: plays as the frame travels through the viewport
 setupReel("aboutReelVideo", "aboutReelTime", (video) => {
