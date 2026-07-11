@@ -10,14 +10,10 @@
    category: "reels" | "ads" | "brand"
    ---------------------------------------------------------------- */
 const VIDEOS = [
-  { title: "Launch campaign",   category: "reels", src: null },
-  { title: "Product ad",        category: "ads",   src: null },
-  { title: "Brand film",        category: "brand", src: null },
-  { title: "Client case — Reel", category: "reels", src: null },
-  { title: "Converting ad",     category: "ads",   src: null },
-  { title: "Behind the scenes", category: "brand", src: null },
-  { title: "Trend format",      category: "reels", src: null },
-  { title: "Retargeting ad",    category: "ads",   src: null },
+  { title: "On set — Interview shoot", category: "brand", src: "assets/videos/onset-interview.mp4" },
+  { title: "Studio session — BTS",     category: "reels", src: "assets/videos/studio-session.mp4" },
+  { title: "Product ad",               category: "ads",   src: null },
+  { title: "Launch campaign",          category: "reels", src: null },
 ];
 
 const CATEGORY_LABELS = {
