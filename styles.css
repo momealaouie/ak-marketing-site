@@ -160,24 +160,46 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   letter-spacing: 0.06em;
 }
 
-/* ---------------- Scroll-scrubbed hero video ---------------- */
-.scrub { height: 300vh; position: relative; }
-
-.scrub-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; background: var(--navy); }
-.scrub-sticky video { width: 100%; height: 100%; object-fit: cover; display: block; }
-/* Portrait source video: show it whole on wide screens instead of a blurry crop */
-@media (min-width: 901px) { .scrub-sticky video { object-fit: contain; } }
-
-.scrub-overlay {
-  position: absolute; left: 28px; bottom: 28px; right: 28px;
-  display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
+/* ---------------- Hero: reel-first split ---------------- */
+.hero-split {
+  background: var(--navy);
+  min-height: calc(100vh - 80px);
+  display: flex; align-items: center;
+  padding: 56px 0;
 }
 
-.scrub-tagline, .scrub-hint {
-  color: var(--white); font-weight: 700; font-size: 0.85rem;
-  text-transform: uppercase; letter-spacing: 0.14em;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+.hero-grid {
+  display: grid; grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px; align-items: center; width: 100%;
 }
+
+.hero-split .eyebrow { color: var(--green-light); }
+
+.hero-split h1 {
+  font-size: clamp(3rem, 7.5vw, 6rem);
+  line-height: 0.95; text-transform: uppercase; letter-spacing: 0.01em;
+}
+.hero-split h1 .accent { color: var(--green-light); }
+
+.hero-sub { max-width: 460px; margin: 24px 0 32px; opacity: 0.85; font-size: 1.05rem; }
+
+/* The reel: framed 9:16 video with camera UI */
+.reel { justify-self: end; width: min(340px, 100%); border: 1px solid rgba(255, 255, 255, 0.25); background: #0A0A0A; }
+.reel video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; display: block; }
+
+.reel-bar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 14px; color: var(--white);
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+.reel-bar-bottom { border-bottom: none; border-top: 1px solid rgba(255, 255, 255, 0.15); color: var(--green-light); }
+
+.rec { display: inline-flex; align-items: center; gap: 8px; }
+.rec-dot { width: 9px; height: 9px; background: #E03A3A; animation: blink 1.2s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0.15; } }
+#reelTime { font-variant-numeric: tabular-nums; opacity: 0.9; }
 
 /* ---------------- Featured clients ---------------- */
 .clients { margin-bottom: 56px; }
@@ -270,31 +292,16 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 /* ---------------- 3. Preview: selected work ---------------- */
 .preview { background: var(--navy); padding: 100px 0; }
 
-.preview-sub {
-  margin-top: 16px;
-  opacity: 0.75;
-  max-width: 520px;
-}
+.preview-sub { margin-top: 16px; opacity: 0.75; max-width: 520px; }
 
-.tabs {
-  display: flex;
-  gap: 8px;
-  margin: 40px 0 32px;
-  flex-wrap: wrap;
-}
+.tabs { display: flex; gap: 8px; margin: 40px 0 32px; flex-wrap: wrap; }
 
 .tab {
-  font-family: var(--font);
-  font-size: 0.85rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 12px 24px;
-  background: transparent;
-  color: var(--white);
+  font-family: var(--font); font-size: 0.85rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 12px 24px; background: transparent; color: var(--white);
   border: 1px solid rgba(255, 255, 255, 0.25);
-  cursor: pointer;
-  transition: all 0.2s ease;
+  cursor: pointer; transition: all 0.2s ease;
 }
 
 .tab:hover { border-color: var(--green-light); color: var(--green-light); }
@@ -542,7 +549,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .marquee-track { animation: none; }
-  .scrub { height: 100vh; } /* static video frame, no scrub runway */
+  .rec-dot { animation: none; }
 }
 
 /* ---------------- Responsive ---------------- */
@@ -554,6 +561,8 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   .clients-grid { grid-template-columns: repeat(2, 1fr); }
   .site-nav { gap: 16px; }
   .site-nav a:not(.nav-cta):not(.nav-social) { display: none; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .reel { justify-self: center; }
 }
 
 @media (max-width: 560px) {
@@ -568,8 +577,8 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   .container { padding: 0 18px; }
   .hero { padding: 52px 0 60px; }
   .about, .preview, .contact { padding: 60px 0; }
-  .scrub { height: 220vh; }
-  .scrub-overlay { left: 16px; bottom: 16px; right: 16px; }
+  .hero-split { min-height: 0; padding: 44px 0 56px; }
+  .reel { width: min(280px, 100%); }
 
   /* Stats: compact 2x2 grid instead of a tall stack */
   .stats-grid { gap: 12px; margin: 40px 0 36px; }

@@ -42,25 +42,56 @@
     </nav>
   </header>
 
-  <!-- ============ SCROLL-SCRUBBED HERO VIDEO ============
-       Drop the video file at assets/hero.mp4 (muted, no audio needed).
-       The section stays hidden until the file exists. Scrolling down
-       plays the video forward; scrolling up rewinds it. -->
-  <section class="scrub" id="scrubSection" hidden>
-    <div class="scrub-sticky">
-      <video id="scrubVideo" src="assets/hero.mp4" muted playsinline preload="auto"></video>
-      <div class="scrub-overlay">
-        <p class="scrub-tagline">Production&nbsp;·&nbsp;Marketing&nbsp;·&nbsp;Advertising</p>
-        <p class="scrub-hint">Scroll ↓</p>
+  <!-- ============ HERO: REEL-FIRST SPLIT ============
+       Left: statement typography. Right: the reel — a framed 9:16
+       video that scrubs with scroll; the timecode follows playback. -->
+  <section class="hero-split">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow reveal">Film production &amp; marketing — Halmstad</p>
+        <h1 class="reveal">We make<br>brands<br><span class="accent">move.</span></h1>
+        <p class="hero-sub reveal">We produce films for businesses and make them perform — on social media and at commercial level.</p>
+        <div class="hero-actions reveal">
+          <a href="#contact" class="btn btn-green">Book a call</a>
+          <a href="#work" class="btn btn-ghost">See selected work</a>
+        </div>
+      </div>
+
+      <div class="reel reveal">
+        <div class="reel-bar"><span class="rec"><span class="rec-dot"></span>REC</span><span id="reelTime">00:00:00</span></div>
+        <video id="reelVideo" src="assets/hero.mp4" muted playsinline preload="auto"></video>
+        <div class="reel-bar reel-bar-bottom"><span>AK Media — BTS</span><span>9:16</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 1. HERO: REVIEWS & RESULTS ============ -->
+  <!-- ============ KEYWORD MARQUEE (script.js clones the sequence to fill any screen width) ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="marquee-seq">
+        <span>Production</span><span class="dot">•</span>
+        <span>Marketing</span><span class="dot">•</span>
+        <span>Advertising</span><span class="dot">•</span>
+        <span>Film</span><span class="dot">•</span>
+        <span>Social Media</span><span class="dot">•</span>
+        <span>Commercials</span><span class="dot">•</span>
+      </div>
+      <div class="marquee-seq">
+        <span>Production</span><span class="dot">•</span>
+        <span>Marketing</span><span class="dot">•</span>
+        <span>Advertising</span><span class="dot">•</span>
+        <span>Film</span><span class="dot">•</span>
+        <span>Social Media</span><span class="dot">•</span>
+        <span>Commercials</span><span class="dot">•</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 1. RESULTS: STATS, REVIEWS & CLIENTS ============ -->
   <section id="results" class="hero">
     <div class="container">
-      <p class="eyebrow reveal">Film production &amp; marketing that delivers</p>
-      <h1 class="reveal">Results that speak<br>for themselves.</h1>
+      <p class="eyebrow reveal">Results</p>
+      <h2 class="reveal">Results that speak<br>for themselves.</h2>
 
       <!-- NOTE: placeholder numbers — replace with real figures (see README) -->
       <div class="stats-grid">
@@ -134,34 +165,8 @@
         </div>
       </div>
 
-      <div class="hero-actions reveal">
-        <a href="#contact" class="btn btn-green">Book a call</a>
-        <a href="#work" class="btn btn-ghost">See selected work</a>
-      </div>
     </div>
   </section>
-
-  <!-- ============ KEYWORD MARQUEE (script.js clones the sequence to fill any screen width) ============ -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <div class="marquee-seq">
-        <span>Production</span><span class="dot">•</span>
-        <span>Marketing</span><span class="dot">•</span>
-        <span>Advertising</span><span class="dot">•</span>
-        <span>Film</span><span class="dot">•</span>
-        <span>Social Media</span><span class="dot">•</span>
-        <span>Commercials</span><span class="dot">•</span>
-      </div>
-      <div class="marquee-seq">
-        <span>Production</span><span class="dot">•</span>
-        <span>Marketing</span><span class="dot">•</span>
-        <span>Advertising</span><span class="dot">•</span>
-        <span>Film</span><span class="dot">•</span>
-        <span>Social Media</span><span class="dot">•</span>
-        <span>Commercials</span><span class="dot">•</span>
-      </div>
-    </div>
-  </div>
 
   <!-- ============ 2. ABOUT & HOW WE WORK ============ -->
   <section id="about" class="about">

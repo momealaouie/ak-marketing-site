@@ -42,34 +42,36 @@ if (marqueeTrack) {
   }
 }
 
-/* ---------------- Scroll-scrubbed hero video ----------------
-   The section is 300vh tall with a sticky full-screen video.
-   Scroll progress through the section maps to video time:
-   scroll down = play forward, scroll up = rewind. The section
-   stays hidden until assets/hero.mp4 loads. */
-const scrubSection = document.getElementById("scrubSection");
-const scrubVideo = document.getElementById("scrubVideo");
-if (scrubSection && scrubVideo) {
-  const initScrub = () => {
-    scrubSection.hidden = false;
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion || !scrubVideo.duration) return; // show first frame, no scrubbing
+/* ---------------- Hero reel: scroll scrubs the video ----------------
+   Scrolling down plays the reel forward; scrolling up rewinds it.
+   The timecode readout follows playback like a camera UI. */
+const reelVideo = document.getElementById("reelVideo");
+const reelTime = document.getElementById("reelTime");
+if (reelVideo && reelTime) {
+  const fmtTimecode = (t) => {
+    const mm = String(Math.floor(t / 60)).padStart(2, "0");
+    const ss = String(Math.floor(t % 60)).padStart(2, "0");
+    const ff = String(Math.floor((t % 1) * 30)).padStart(2, "0");
+    return `${mm}:${ss}:${ff}`;
+  };
 
+  const initReel = () => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !reelVideo.duration) return;
     let targetTime = 0;
     let currentTime = 0;
 
     const updateTarget = () => {
-      const rect = scrubSection.getBoundingClientRect();
-      const scrollable = rect.height - window.innerHeight;
-      const progress = Math.min(1, Math.max(0, -rect.top / scrollable));
-      targetTime = progress * scrubVideo.duration;
+      // The first ~1.2 screens of scroll map to the full clip
+      const progress = Math.min(1, window.scrollY / (window.innerHeight * 1.2));
+      targetTime = progress * reelVideo.duration;
     };
 
     // Ease toward the target each frame for a smooth scrub
     const tick = () => {
       currentTime += (targetTime - currentTime) * 0.14;
-      if (Math.abs(scrubVideo.currentTime - currentTime) > 0.01) {
-        scrubVideo.currentTime = currentTime;
+      if (Math.abs(reelVideo.currentTime - currentTime) > 0.01) {
+        reelVideo.currentTime = currentTime;
+        reelTime.textContent = fmtTimecode(currentTime);
       }
       requestAnimationFrame(tick);
     };
@@ -80,9 +82,8 @@ if (scrubSection && scrubVideo) {
     requestAnimationFrame(tick);
   };
   // Metadata may already be loaded by the time this script runs
-  if (scrubVideo.readyState >= 1) initScrub();
-  else scrubVideo.addEventListener("loadedmetadata", initScrub, { once: true });
-  scrubVideo.addEventListener("error", () => { scrubSection.hidden = true; });
+  if (reelVideo.readyState >= 1) initReel();
+  else reelVideo.addEventListener("loadedmetadata", initReel, { once: true });
 }
 
 /* ---------------- Scroll reveal ---------------- */
