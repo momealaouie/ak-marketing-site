@@ -62,7 +62,7 @@
       <div class="reel reveal">
         <div class="reel-bar"><span class="rec"><span class="rec-dot"></span>REC</span><span id="reelTime">00:00:00</span></div>
         <video id="reelVideo" src="assets/hero.mp4" poster="assets/hero.jpg" muted playsinline preload="auto" autoplay loop></video>
-        <div class="reel-bar reel-bar-bottom"><span>AK Media — BTS</span><span>9:16</span></div>
+        <div class="reel-bar reel-bar-bottom"><span>AK Media — In studio</span><span>9:16</span></div>
       </div>
     </div>
   </section>
@@ -187,9 +187,8 @@
       <div class="about-grid">
         <div class="reel reel-about reveal">
           <div class="reel-bar"><span class="rec"><span class="rec-dot"></span>REC</span><span id="aboutReelTime">00:00:00</span></div>
-          <!-- autoplay is a mobile loading trick — script.js pauses it and scrubs instead -->
-          <video id="aboutReelVideo" src="assets/about-reel.mp4" poster="assets/about-reel.jpg" muted playsinline preload="auto" autoplay></video>
-          <div class="reel-bar reel-bar-bottom"><span>AK Media — In studio</span><span>9:16</span></div>
+          <video id="aboutReelVideo" src="assets/about-reel.mp4" poster="assets/about-reel.jpg" muted playsinline preload="auto" autoplay loop></video>
+          <div class="reel-bar reel-bar-bottom"><span>AK Media — BTS</span><span>9:16</span></div>
         </div>
         <div class="about-copy">
           <p class="eyebrow reveal" data-i18n="about.eyebrow">About us</p>
@@ -272,7 +271,7 @@
     <div class="container">
       <p class="eyebrow reveal" data-i18n="contact.eyebrow">Contact</p>
       <h2 class="reveal" data-i18n="contact.title">Ready to grow?</h2>
-      <p class="contact-sub reveal" data-i18n="contact.sub">Fill in the form and we'll get back to you within 24 hours.</p>
+      <p class="contact-sub reveal" data-i18n="contact.sub">Fill in the form and we'll get back to you within 72 hours.</p>
 
       <form id="contactForm" class="reveal" action="https://formsubmit.co/akram.hameed8@icloud.com" method="POST" novalidate>
         <input type="hidden" name="_subject" value="New inquiry — AK Media website">
@@ -308,7 +307,7 @@
           <span class="field-error" data-for="message" data-i18n="e.message">Please write a message.</span>
         </div>
         <button type="submit" class="btn btn-green" data-i18n="f.send">Send message</button>
-        <p class="form-success" id="formSuccess" hidden data-i18n="f.success">Thank you! We'll get back to you within 24 hours.</p>
+        <p class="form-success" id="formSuccess" hidden data-i18n="f.success">Thank you! We'll get back to you within 72 hours.</p>
         <p class="form-error" id="formError" hidden data-i18n="f.error">Something went wrong — please try again, or DM us on Instagram instead.</p>
       </form>
 

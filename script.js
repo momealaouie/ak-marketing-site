@@ -21,11 +21,9 @@ const VIDEOS = [
   { title: "Industrial district, Aerial", category: "commercial", src: "assets/videos/industrial-aerial.mp4", wide: true },
   { title: "Custom wheels, Detail", category: "commercial", src: "assets/videos/custom-wheels.mp4", wide: true },
   // BTS
-  { title: "Burger Mansion, Burger Franchise", category: "bts", src: "assets/videos/burgermansion-kitchen.mp4" },
   { title: "Däckcentrum, Premium Wheel & Tire", category: "bts", src: "assets/videos/dackcentrum-showroom.mp4" },
   { title: "Däckcentrum, Premium Wheel & Tire", category: "bts", src: "assets/videos/dackcentrum-wheels.mp4" },
   { title: "Ademi AB, Client study", category: "bts", src: "assets/videos/onset-interview.mp4" },
-  { title: "Halmstad University, International department", category: "bts", src: "assets/videos/studio-interview.mp4" },
   { title: "IBJJF, European Championship", category: "bts", src: "assets/videos/sports-event.mp4" },
 ];
 
@@ -68,10 +66,10 @@ const I18N = {
     "tab.all": "All", "tab.reels": "Reels", "tab.commercial": "Commercial shoots", "tab.bts": "BTS",
     "work.feed": "Watch the full feed",
     "contact.eyebrow": "Contact", "contact.title": "Ready to grow?",
-    "contact.sub": "Fill in the form and we'll get back to you within 24 hours.",
+    "contact.sub": "Fill in the form and we'll get back to you within 72 hours.",
     "f.name": "Name *", "f.email": "Email *", "f.phone": "Phone *", "f.company": "Company", "f.message": "Message *",
     "f.send": "Send message",
-    "f.success": "Thank you! We'll get back to you within 24 hours.",
+    "f.success": "Thank you! We'll get back to you within 72 hours.",
     "f.error": "Something went wrong — please try again, or DM us on Instagram instead.",
     "e.name": "Please enter your name.", "e.email": "Please enter a valid email address.",
     "e.phone": "Please enter a valid phone number (7–15 digits).", "e.message": "Please write a message.",
@@ -107,10 +105,10 @@ const I18N = {
     "tab.all": "Alla", "tab.reels": "Reels", "tab.commercial": "Reklamfilm", "tab.bts": "BTS",
     "work.feed": "Se hela flödet",
     "contact.eyebrow": "Kontakt", "contact.title": "Redo att växa?",
-    "contact.sub": "Fyll i formuläret så återkommer vi inom 24 timmar.",
+    "contact.sub": "Fyll i formuläret så återkommer vi inom 72 timmar.",
     "f.name": "Namn *", "f.email": "E-post *", "f.phone": "Telefon *", "f.company": "Företag", "f.message": "Meddelande *",
     "f.send": "Skicka meddelande",
-    "f.success": "Tack! Vi återkommer inom 24 timmar.",
+    "f.success": "Tack! Vi återkommer inom 72 timmar.",
     "f.error": "Något gick fel — försök igen, eller skicka DM på Instagram istället.",
     "e.name": "Ange ditt namn.", "e.email": "Ange en giltig e-postadress.",
     "e.phone": "Ange ett giltigt telefonnummer (7–15 siffror).", "e.message": "Skriv ett meddelande.",
@@ -174,11 +172,9 @@ if (marqueeTrack) {
   }
 }
 
-/* ---------------- Reels: scroll scrubs the video ----------------
-   Scrolling down plays a reel forward; scrolling up rewinds it.
-   The timecode readout follows playback like a camera UI.
-   Reel files are encoded all-intra (every frame a keyframe) so
-   seeking is instant — that is what keeps the scrub judder-free. */
+/* ---------------- Reels: continuous autoplay loop ----------------
+   Both reels just play on repeat; the timecode readout follows
+   playback like a camera UI. No scroll interaction. */
 const fmtTimecode = (t) => {
   const mm = String(Math.floor(t / 60)).padStart(2, "0");
   const ss = String(Math.floor(t % 60)).padStart(2, "0");
@@ -186,64 +182,25 @@ const fmtTimecode = (t) => {
   return `${mm}:${ss}:${ff}`;
 };
 
-function setupReel(videoId, timeId, progressFn) {
+function setupLoopingReel(videoId, timeId) {
   const video = document.getElementById(videoId);
   const timeEl = document.getElementById(timeId);
   if (!video || !timeEl) return;
 
-  const init = () => {
-    // The video carries an autoplay attribute only to force mobile
-    // browsers to actually load it — scrubbing takes over from here
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    video.removeAttribute("autoplay");
     video.pause();
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !video.duration) return;
-    let targetTime = 0;
-    let currentTime = 0;
-
-    const updateTarget = () => { targetTime = progressFn(video) * video.duration; };
-
-    // Ease toward the target each frame for a smooth scrub
-    const tick = () => {
-      currentTime += (targetTime - currentTime) * 0.18;
-      if (Math.abs(video.currentTime - currentTime) > 0.02) {
-        video.currentTime = currentTime;
-        timeEl.textContent = fmtTimecode(currentTime);
-      }
-      requestAnimationFrame(tick);
-    };
-
-    window.addEventListener("scroll", updateTarget, { passive: true });
-    window.addEventListener("resize", updateTarget, { passive: true });
-    updateTarget();
+    return;
+  }
+  const tick = () => {
+    timeEl.textContent = fmtTimecode(video.currentTime || 0);
     requestAnimationFrame(tick);
   };
-  // Metadata may already be loaded by the time this script runs
-  if (video.readyState >= 1) init();
-  else video.addEventListener("loadedmetadata", init, { once: true });
+  requestAnimationFrame(tick);
 }
 
-// Hero reel: plays continuously (autoplay + loop); the timecode
-// readout just follows playback like a camera UI
-const heroVideo = document.getElementById("reelVideo");
-const heroTime = document.getElementById("reelTime");
-if (heroVideo && heroTime) {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    heroVideo.removeAttribute("autoplay");
-    heroVideo.pause();
-  } else {
-    const tickTC = () => {
-      heroTime.textContent = fmtTimecode(heroVideo.currentTime || 0);
-      requestAnimationFrame(tickTC);
-    };
-    requestAnimationFrame(tickTC);
-  }
-}
-
-// About reel: plays as the frame travels through the viewport
-setupReel("aboutReelVideo", "aboutReelTime", (video) => {
-  const rect = video.closest(".reel").getBoundingClientRect();
-  const vh = window.innerHeight;
-  return Math.min(1, Math.max(0, (vh - rect.top) / (vh + rect.height)));
-});
+setupLoopingReel("reelVideo", "reelTime");
+setupLoopingReel("aboutReelVideo", "aboutReelTime");
 
 /* ---------------- Scroll reveal ---------------- */
 const revealObserver = new IntersectionObserver((entries) => {
