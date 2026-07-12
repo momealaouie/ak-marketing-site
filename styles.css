@@ -249,6 +249,8 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 .client-card.light .client-logo-img { background: var(--white); }
 /* .zoom: crop into the center of a square logo so the wordmark reads larger */
 .client-logo-img.zoom { object-fit: cover; padding: 0; }
+/* .raise: this logo file has extra whitespace below the mark, nudge it up */
+.client-logo-img.raise { object-position: 50% 20%; }
 
 /* Fallback monogram shown by script.js until the logo file exists */
 .client-logo {
@@ -432,11 +434,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 .contact-sub { margin: 16px 0 40px; opacity: 0.8; }
 #contactForm { max-width: 640px; }
 
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
 .form-field { margin-bottom: 20px; display: flex; flex-direction: column; }
 
