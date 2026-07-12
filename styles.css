@@ -128,7 +128,12 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 /* ---------------- 1. Hero: reviews & results ---------------- */
 .hero { padding: 96px 0 110px; background: var(--navy); }
 
-.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin: 56px 0 48px; }
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 56px 0 48px;
+}
 
 .stat-block {
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -144,13 +149,27 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   text-transform: uppercase; letter-spacing: 0.08em;
 }
 
-.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 56px; }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 56px;
+}
 
-.review-card { background: var(--navy-deep); border-left: 3px solid var(--green); padding: 28px; }
+.review-card {
+  background: var(--navy-deep);
+  border-left: 3px solid var(--green);
+  padding: 28px;
+}
 
 .review-card p { font-size: 1rem; margin-bottom: 18px; }
 
-.review-card footer { font-size: 0.85rem; color: var(--green-light); text-transform: uppercase; letter-spacing: 0.06em; }
+.review-card footer {
+  font-size: 0.85rem;
+  color: var(--green-light);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
 
 /* ---------------- Hero: reel-first split ---------------- */
 .hero-split {
@@ -158,30 +177,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   min-height: calc(100vh - 80px);
   display: flex; align-items: center;
   padding: 56px 0;
-  position: relative; overflow: hidden;
 }
-
-/* Subtle dot-grid texture so the landing view doesn't read empty */
-.hero-split::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 26px 26px;
-}
-
-/* Viewfinder chrome: corner brackets + technical tags, camera-UI flavor */
-.viewfinder { position: absolute; inset: 22px; pointer-events: none; }
-.vf-corner { position: absolute; width: 26px; height: 26px; border-color: rgba(255, 255, 255, 0.3); }
-.vf-corner.tl { top: 0; left: 0; border-top: 1px solid; border-left: 1px solid; }
-.vf-corner.tr { top: 0; right: 0; border-top: 1px solid; border-right: 1px solid; }
-.vf-corner.bl { bottom: 0; left: 0; border-bottom: 1px solid; border-left: 1px solid; }
-.vf-corner.br { bottom: 0; right: 0; border-bottom: 1px solid; border-right: 1px solid; }
-
-.vf-tag {
-  position: absolute; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--green-light); opacity: 0.75;
-}
-.vf-tag.tl { top: 0; left: 36px; }
-.vf-tag.br { bottom: 0; right: 36px; }
 
 .hero-grid {
   display: grid; grid-template-columns: 1.15fr 0.85fr;
@@ -361,13 +357,24 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 .video-card video:-webkit-full-screen { object-fit: contain; background: #000; }
 
 .video-placeholder {
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
-  color: rgba(255, 255, 255, 0.4); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .video-placeholder .play-icon {
-  width: 48px; height: 48px; border: 2px solid var(--green-light);
-  display: flex; align-items: center; justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--green-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .video-placeholder .play-icon::after {
@@ -574,8 +581,6 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   .about, .preview, .contact { padding: 60px 0; }
   .hero-split { min-height: 0; padding: 44px 0 56px; }
   .reel { width: min(280px, 100%); }
-  .viewfinder { inset: 12px; }
-  .vf-tag { display: none; }
 
   /* Stats: compact 2x2 grid instead of a tall stack */
   .stats-grid { gap: 12px; margin: 40px 0 36px; }
