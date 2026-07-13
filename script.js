@@ -13,17 +13,17 @@ const VIDEOS = [
   // Reels (portrait, cars & vertical edits)
   { title: "Däckcentrum, Porsche 718 Spyder", category: "reels", src: "assets/videos/porsche-dackcentrum.mp4" },
   { title: "Tom Auto AB, Mercedes-AMG C63", category: "reels", src: "assets/videos/tomauto-c63.mp4" },
-  { title: "Range Rover Sport", category: "reels", src: "assets/videos/rangerover-reel.mp4" },
-  { title: "Helsingborg, City reel", category: "reels", src: "assets/videos/helsingborg-reel.mp4" },
+  { title: "Däckcentrum, Range Rover", category: "reels", src: "assets/videos/rangerover-reel.mp4" },
+  { title: "Venedig, Reklamvideo", category: "reels", src: "assets/videos/helsingborg-reel.mp4" },
   // Commercial shoots (landscape, rendered as wide 16:9 cards)
-  { title: "Custom wheels, Detail", category: "commercial", src: "assets/videos/custom-wheels.mp4", wide: true },
-  { title: "Halmstad University, Campus aerial", category: "commercial", src: "assets/videos/hh-campus-aerial.mp4", wide: true },
-  { title: "Industrial district, Aerial", category: "commercial", src: "assets/videos/industrial-aerial.mp4", wide: true },
-  { title: "Helsingborg, City film", category: "commercial", src: "assets/videos/helsingborg-cityfilm.mp4", wide: true },
+  { title: "Däckcentrum, Car & wheels", category: "commercial", src: "assets/videos/custom-wheels.mp4", wide: true },
+  { title: "Halmstad University, International department", category: "commercial", src: "assets/videos/hh-campus-aerial.mp4", wide: true },
+  { title: "Ademi AB, Client interview", category: "commercial", src: "assets/videos/industrial-aerial.mp4", wide: true },
+  { title: "Däckcentrum, Reklamfilm", category: "commercial", src: "assets/videos/helsingborg-cityfilm.mp4", wide: true },
   // BTS
   { title: "Däckcentrum, Premium Wheel & Tire", category: "bts", src: "assets/videos/dackcentrum-showroom.mp4" },
   { title: "Däckcentrum, Premium Wheel & Tire", category: "bts", src: "assets/videos/dackcentrum-wheels.mp4" },
-  { title: "AK Media, In studio", category: "bts", src: "assets/hero.mp4" },
+  { title: "Ademi AB, In studio", category: "bts", src: "assets/hero.mp4" },
   { title: "IBJJF, European Championship", category: "bts", src: "assets/videos/sports-event.mp4" },
 ];
 
