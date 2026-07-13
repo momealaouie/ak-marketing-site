@@ -5,6 +5,7 @@
    ================================================================ */
 
 :root {
+  color-scheme: light;
   --navy: #14181C;
   --navy-deep: #0E1A2B;
   --green: #575C49;        /* logo green */

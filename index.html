@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
   <title>AK Media | Production, Marketing & Advertising</title>
   <meta name="description" content="AK Media produces commercial-grade films for businesses and markets them across social media and commercial channels. Production. Marketing. Advertising.">
   <meta name="keywords" content="production, marketing, advertising, film production, social media, commercials, brand films, video marketing">
@@ -15,6 +16,26 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <script>
+    // Always open on the very top of the page, even if the shared/opened
+    // URL carries a #section hash (e.g. from a copied address-bar link).
+    // The browser resolves the fragment scroll again once the target
+    // element and layout are ready (after load), so we must re-force the
+    // scroll then too — stripping the hash early isn't enough on its own.
+    (function () {
+      var hadHash = !!window.location.hash;
+      if (!hadHash) return;
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      var toTop = function () { window.scrollTo(0, 0); };
+      toTop();
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+      window.addEventListener("load", function () {
+        toTop();
+        setTimeout(toTop, 0);
+        setTimeout(toTop, 300);
+      });
+    })();
+  </script>
 
   <!-- ============ HEADER ============ -->
   <header class="site-header">
@@ -61,8 +82,8 @@
 
       <div class="reel reveal">
         <div class="reel-bar"><span class="rec"><span class="rec-dot"></span>REC</span><span id="reelTime">00:00:00</span></div>
-        <video id="reelVideo" src="assets/hero.mp4" poster="assets/hero.jpg" muted playsinline preload="auto" autoplay loop></video>
-        <div class="reel-bar reel-bar-bottom"><span>AK Media · In studio</span><span>9:16</span></div>
+        <video id="reelVideo" src="assets/videos/onset-interview.mp4" poster="assets/videos/onset-interview.jpg" muted playsinline preload="auto" autoplay loop></video>
+        <div class="reel-bar reel-bar-bottom"><span>Ademi AB · Client study</span><span>9:16</span></div>
       </div>
     </div>
   </section>
@@ -118,15 +139,15 @@
       <div class="reviews-grid">
         <blockquote class="review-card reveal">
           <p data-i18n="r1.text">"AK took our brand from invisible to 1.2 million views in three months. The best investment we've made."</p>
-          <footer data-i18n="r1.author">Anna Lindqvist, CEO, Nordic Wear</footer>
+          <footer data-i18n="r1.author">Dany R, COO, Exciteclo</footer>
         </blockquote>
         <blockquote class="review-card reveal">
           <p data-i18n="r2.text">"Professional, fast and above all: they deliver numbers, not just pretty videos."</p>
-          <footer data-i18n="r2.author">Marcus Berg, Founder, FitLab</footer>
+          <footer data-i18n="r2.author">Iba A, CEO, Ademi AB</footer>
         </blockquote>
         <blockquote class="review-card reveal">
           <p data-i18n="r3.text">"We've tried three agencies before. AK is the first one that actually understands our audience."</p>
-          <footer data-i18n="r3.author">Sara Öman, CMO, Kavia Bygg</footer>
+          <footer data-i18n="r3.author">Taulant B, CEO, TOM AUTO AB</footer>
         </blockquote>
       </div>
 
