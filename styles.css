@@ -426,6 +426,44 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 .social-btn svg { flex-shrink: 0; }
 
 /* ---------------- 4. Contact ---------------- */
+/* ---------------- 4. FAQ ---------------- */
+.faq { background: var(--navy); padding: 100px 0; }
+.faq .eyebrow { color: var(--green-light); }
+
+.faq-list { margin-top: 40px; max-width: 760px; display: grid; gap: 12px; }
+
+.faq-item {
+  background: var(--navy-deep);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 20px 24px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+/* +/– indicator lives in a pseudo-element so the i18n innerHTML swap
+   on <summary> can't wipe it out */
+.faq-item summary::after {
+  content: "+";
+  font-size: 1.5rem; font-weight: 500; line-height: 1;
+  color: var(--green-light);
+  flex-shrink: 0;
+}
+
+.faq-item[open] summary::after { content: "\2013"; }
+
+.faq-item summary:hover { color: var(--green-light); }
+
+.faq-item p { padding: 0 24px 22px; opacity: 0.85; font-size: 0.95rem; max-width: 660px; }
+
+/* ---------------- 5. Contact ---------------- */
 .contact {
   background: var(--off-white);
   color: var(--navy);
@@ -579,7 +617,9 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 
   .container { padding: 0 18px; }
   .hero { padding: 52px 0 60px; }
-  .about, .preview, .contact { padding: 60px 0; }
+  .about, .preview, .faq, .contact { padding: 60px 0; }
+  .faq-item summary { padding: 16px 18px; }
+  .faq-item p { padding: 0 18px 18px; }
   .hero-split { min-height: 0; padding: 44px 0 56px; }
   .reel { width: min(280px, 100%); }
 
