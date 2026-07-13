@@ -145,6 +145,22 @@ const I18N = {
 
 let LANG = localStorage.getItem("lang") || "en";
 
+/* Inline SVG flags for the language toggle (emoji flags render as plain
+   letters on Windows, so real markup is the only reliable option) */
+const FLAG_EN =
+  '<svg viewBox="0 0 20 14" aria-hidden="true">' +
+  '<rect width="20" height="14" fill="#B22234"/>' +
+  '<g fill="#fff"><rect y="2" width="20" height="2"/><rect y="6" width="20" height="2"/><rect y="10" width="20" height="2"/></g>' +
+  '<rect width="9" height="8" fill="#3C3B6E"/>' +
+  '<g fill="#fff"><circle cx="2" cy="2" r="0.7"/><circle cx="4.5" cy="2" r="0.7"/><circle cx="7" cy="2" r="0.7"/>' +
+  '<circle cx="3.2" cy="4" r="0.7"/><circle cx="5.8" cy="4" r="0.7"/>' +
+  '<circle cx="2" cy="6" r="0.7"/><circle cx="4.5" cy="6" r="0.7"/><circle cx="7" cy="6" r="0.7"/></g></svg>';
+const FLAG_SV =
+  '<svg viewBox="0 0 20 14" aria-hidden="true">' +
+  '<rect width="20" height="14" fill="#006AA7"/>' +
+  '<rect x="6" width="3" height="14" fill="#FECC00"/>' +
+  '<rect y="5.5" width="20" height="3" fill="#FECC00"/></svg>';
+
 function activeCategory() {
   const active = document.querySelector(".tab.active");
   return active ? active.dataset.category : "all";
@@ -159,9 +175,13 @@ function applyLang(lang) {
     const value = dict[el.dataset.i18n];
     if (value !== undefined) el.innerHTML = value;
   });
-  // One EN/SV button; the active language is bold
+  // One button with both flags; the active language's flag is full-strength
   const toggle = document.getElementById("langToggle");
-  if (toggle) toggle.innerHTML = lang === "en" ? "<b>EN</b><span>/</span>SV" : "EN<span>/</span><b>SV</b>";
+  if (toggle) {
+    toggle.innerHTML =
+      '<span class="flag' + (lang === "en" ? " active" : "") + '" title="English">' + FLAG_EN + "</span>" +
+      '<span class="flag' + (lang === "sv" ? " active" : "") + '" title="Svenska">' + FLAG_SV + "</span>";
+  }
   renderVideos(activeCategory());
 }
 

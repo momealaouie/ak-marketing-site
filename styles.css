@@ -5,7 +5,9 @@
    ================================================================ */
 
 :root {
-  color-scheme: light;
+  /* "only light" also opts out of Android Chrome's forced auto-darkening,
+     which was turning the light sections gray on mobile */
+  color-scheme: only light;
   interpolate-size: allow-keywords; /* lets height animate to auto (FAQ) */
   --navy: #14181C;
   --navy-deep: #0E1A2B;
@@ -114,15 +116,15 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 .nav-social:hover { color: var(--green-light); }
 
 .lang-toggle {
-  background: none; cursor: pointer; padding: 7px 12px;
+  background: none; cursor: pointer; padding: 7px 10px;
   border: 1px solid rgba(255, 255, 255, 0.35);
-  color: var(--white); font-family: var(--font);
-  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em;
+  display: inline-flex; align-items: center; gap: 8px;
   transition: all 0.2s ease;
 }
 .lang-toggle:hover { border-color: var(--green-light); }
-.lang-toggle b { color: var(--green-light); }
-.lang-toggle span { opacity: 0.4; padding: 0 4px; }
+.lang-toggle .flag { display: inline-flex; opacity: 0.35; transition: opacity 0.2s ease; }
+.lang-toggle .flag svg { display: block; width: 21px; height: auto; }
+.lang-toggle .flag.active { opacity: 1; }
 
 .nav-cta { background: var(--green); padding: 10px 22px; font-weight: 700; opacity: 1 !important; }
 .nav-cta:hover { background: var(--green-dark); }
