@@ -6,7 +6,7 @@ Static website for a film production & marketing agency. Sharp corners, premium 
 
 | File | Contents |
 |------|----------|
-| `index.html` | The whole page: hero (reviews + results + featured clients) → keyword marquee → about → selected work tabs → contact form |
+| `index.html` | The whole page: hero (reviews + results + featured clients) → keyword marquee → about (journey timeline + how we work) → selected work tabs → FAQ → contact form |
 | `styles.css` | All styling. `border-radius: 0 !important` globally — sharp corners everywhere |
 | `script.js` | Video list, tabs, scroll reveal animations, animated stats, form validation |
 | `assets/logo.png` | The AK Media logo (original) |
@@ -27,6 +27,8 @@ Open `script.js` and edit the `VIDEOS` list at the top:
 The form posts to [FormSubmit](https://formsubmit.co) and delivers submissions to the email address in the form `action` in `index.html` — no account needed. **The first submission triggers a one-time activation email to that address; click the link in it to start receiving messages.** To change the recipient, edit the address in the `action` attribute. After activation, FormSubmit emails you a random alias string you can use in the `action` instead of the plain address to keep it out of the page source.
 
 Validation: name required, email must be valid (`user@domain.tld`), phone required (7–15 digits, `+`/spaces/dashes allowed), message required.
+
+The email uses FormSubmit's **box** template (`_template=box`). Do not switch back to `table` — that template clips long messages after ~6 lines in the delivered email, so the rest of a customer's message is lost.
 
 ### Stats & reviews
 Edit directly in `index.html` (the `#results` section).

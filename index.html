@@ -214,13 +214,29 @@
         </div>
         <div class="about-copy">
           <p class="eyebrow reveal" data-i18n="about.eyebrow">About us</p>
-          <h2 class="reveal" data-i18n="about.title">We produce films.<br>We make them perform.</h2>
+          <h2 class="reveal" data-i18n="about.title">From Sweden<br>to the world.</h2>
           <p class="about-text reveal" data-i18n="about.text">
-            AK Media is a results-driven agency specializing in film production and marketing
-            for businesses. We produce commercial-grade video content and put it to work
-            across social media and commercial channels, with a clear goal behind every frame
-            and results measured against real numbers.
+            AK Media is a results-driven film production and marketing agency.
+            This is the journey that shaped how we work.
           </p>
+          <ol class="journey">
+            <li class="journey-step reveal">
+              <h4 data-i18n="j1.t">The beginning</h4>
+              <p data-i18n="j1.p">AK Media started in Sweden, producing content for restaurants and influencers — fast-paced work that taught us what makes people stop scrolling.</p>
+            </li>
+            <li class="journey-step reveal">
+              <h4 data-i18n="j2.t">Into sports</h4>
+              <p data-i18n="j2.p">We stepped into the sports world by sponsoring a BJJ club, and were soon working internationally with world champions.</p>
+            </li>
+            <li class="journey-step reveal">
+              <h4 data-i18n="j3.t">Specialization</h4>
+              <p data-i18n="j3.p">We took that experience into demanding industries: automotive, food and real estate.</p>
+            </li>
+            <li class="journey-step reveal">
+              <h4 data-i18n="j4.t">Today</h4>
+              <p data-i18n="j4.p">We work across 6+ countries, with one goal above everything else: results.</p>
+            </li>
+          </ol>
         </div>
       </div>
 
@@ -333,7 +349,9 @@
       <form id="contactForm" class="reveal" action="https://formsubmit.co/akram.hameed8@icloud.com" method="POST" novalidate>
         <input type="hidden" name="_subject" value="New inquiry: AK Media website">
         <input type="hidden" name="_cc" value="info@akmediaz.com">
-        <input type="hidden" name="_template" value="table">
+        <!-- "box" template: the table template clips long messages after ~6
+             lines in the delivered email — box shows the full message. -->
+        <input type="hidden" name="_template" value="box">
         <input type="hidden" name="_captcha" value="false">
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
         <div class="form-row">
