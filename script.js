@@ -41,7 +41,7 @@ const I18N = {
     "nav.results": "Results", "nav.about": "About", "nav.work": "Work", "nav.contact": "Contact us",
     "hero.eyebrow": "Film production &amp; marketing",
     "hero.title": 'We make<br>brands<br><span class="accent">move.</span>',
-    "hero.sub": "We produce films for businesses and make them perform on social media and at commercial level.",
+    "hero.sub": "We produce films for businesses and make them perform across social media and commercial campaigns",
     "hero.cta1": "Book a call", "hero.cta2": "See selected work",
     "results.eyebrow": "Results", "results.title": "Results that speak<br>for themselves.",
     "stats.films": "Films produced", "stats.views": "Views generated",
