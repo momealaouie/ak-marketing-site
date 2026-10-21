@@ -42,12 +42,7 @@ const I18N = {
     "hero.eyebrow": "Film production &amp; marketing",
     "hero.title": 'We make<br>brands<br><span class="accent">move.</span>',
     "hero.sub": "We produce films for businesses and make them perform across social media and commercial campaigns",
-    "hero.cta1": "Book a call", "hero.cta2": "See selected work",
-    "who.eyebrow": "Who we work with", "who.title": "We know your business.",
-    "n1.t": "Real estate", "n1.p": "Listings that get seen, and a name people remember. We film the homes, run the ads and make you the go-to agent in your area.",
-    "n2.t": "Law firms", "n2.p": "When people need a lawyer, they call the one they already trust. We make the content that builds that trust, and the ads that reach people when they need you.",
-    "n3.t": "Dealerships", "n3.p": "Cars that stop the scroll, and ads that bring people to the lot. More test drives, not just more likes.",
-    "who.catch": "Not on the list? We work with any business that wants to grow.", "who.cta": "Let's talk",
+    "hero.cta1": "Contact us", "hero.cta2": "See selected work",
     "results.eyebrow": "Results", "results.title": "Results that speak<br>for themselves.",
     "stats.films": "Films produced", "stats.views": "Views generated",
     "stats.brands": "Brands worked with", "stats.roas": "Average ROAS",
@@ -91,24 +86,21 @@ const I18N = {
     "contact.sub": "Fill in the form and we'll get back to you within 24 hours.",
     "f.name": "Name *", "f.email": "Email *", "f.phone": "Phone *", "f.company": "Company", "f.message": "Message *",
     "f.send": "Send message",
+    "f.note": 'We only use your details to get back to you. Read our <a href="privacy.html">privacy policy</a>.',
     "f.success": "Thank you! We'll get back to you within 24 hours.",
     "f.error": "Something went wrong. Please try again, or DM us on Instagram instead.",
     "e.name": "Please enter your name.", "e.email": "Please enter a valid email address.",
     "e.phone": "Please enter a valid phone number (7–15 digits).", "e.message": "Please write a message.",
     "contact.social": 'Prefer social? DM us on <a href="https://www.instagram.com/ak.mediaz" target="_blank" rel="noopener">Instagram</a> or <a href="https://www.tiktok.com/@ak.mediaz" target="_blank" rel="noopener">TikTok</a> · @ak.mediaz',
     "footer.site": "Site", "footer.community": "Community", "footer.contact": "Contact",
+    "footer.privacy": "Privacy policy", "footer.terms": "Terms of use",
   },
   sv: {
     "nav.results": "Resultat", "nav.about": "Om oss", "nav.work": "Arbeten", "nav.contact": "Kontakta oss",
     "hero.eyebrow": "Filmproduktion &amp; marknadsföring",
     "hero.title": 'Vi sätter<br>varumärken<br><span class="accent">i rörelse.</span>',
     "hero.sub": "Vi producerar film åt företag och ser till att den levererar på sociala medier och på kommersiell nivå.",
-    "hero.cta1": "Boka ett samtal", "hero.cta2": "Se utvalda arbeten",
-    "who.eyebrow": "Vilka vi jobbar med", "who.title": "Vi kan er bransch.",
-    "n1.t": "Fastigheter", "n1.p": "Objekt som syns, och ett namn folk minns. Vi filmar bostäderna, kör annonserna och gör er till mäklaren alla tänker på i området.",
-    "n2.t": "Advokatbyråer", "n2.p": "När folk behöver en advokat ringer de den de redan litar på. Vi skapar innehållet som bygger det förtroendet, och annonserna som når folk när de behöver er.",
-    "n3.t": "Bilhandlare", "n3.p": "Bilar som får folk att sluta scrolla, och annonser som tar folk till bilhallen. Fler provkörningar, inte bara fler likes.",
-    "who.catch": "Inte med på listan? Vi jobbar med alla företag som vill växa.", "who.cta": "Hör av er",
+    "hero.cta1": "Kontakta oss", "hero.cta2": "Se utvalda arbeten",
     "results.eyebrow": "Resultat", "results.title": "Resultat som talar<br>för sig själva.",
     "stats.films": "Producerade filmer", "stats.views": "Genererade visningar",
     "stats.brands": "Varumärken vi jobbat med", "stats.roas": "Genomsnittlig ROAS",
@@ -152,12 +144,14 @@ const I18N = {
     "contact.sub": "Fyll i formuläret så återkommer vi inom 24 timmar.",
     "f.name": "Namn *", "f.email": "E-post *", "f.phone": "Telefon *", "f.company": "Företag", "f.message": "Meddelande *",
     "f.send": "Skicka meddelande",
+    "f.note": 'Vi använder bara dina uppgifter för att svara dig. Läs vår <a href="privacy.html">integritetspolicy</a>.',
     "f.success": "Tack! Vi återkommer inom 24 timmar.",
     "f.error": "Något gick fel. Försök igen, eller skicka DM på Instagram istället.",
     "e.name": "Ange ditt namn.", "e.email": "Ange en giltig e-postadress.",
     "e.phone": "Ange ett giltigt telefonnummer (7–15 siffror).", "e.message": "Skriv ett meddelande.",
     "contact.social": 'Föredrar du sociala medier? Skicka DM på <a href="https://www.instagram.com/ak.mediaz" target="_blank" rel="noopener">Instagram</a> eller <a href="https://www.tiktok.com/@ak.mediaz" target="_blank" rel="noopener">TikTok</a> · @ak.mediaz',
     "footer.site": "Sidor", "footer.community": "Följ oss", "footer.contact": "Kontakt",
+    "footer.privacy": "Integritetspolicy", "footer.terms": "Användarvillkor",
   },
 };
 
@@ -279,6 +273,18 @@ function setupLoopingReel(videoId, timeId) {
 setupLoopingReel("reelVideo", "reelTime");
 setupLoopingReel("aboutReelVideo", "aboutReelTime");
 
+/* The about reel sits far down the page, so it isn't part of the first
+   load: its source is attached and played only as it nears the viewport */
+const aboutReel = document.getElementById("aboutReelVideo");
+if (aboutReel && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  new IntersectionObserver((entries, observer) => {
+    if (!entries[0].isIntersecting) return;
+    aboutReel.src = aboutReel.dataset.src;
+    aboutReel.play().catch(() => {});
+    observer.disconnect();
+  }, { rootMargin: "300px" }).observe(aboutReel);
+}
+
 /* ---------------- Scroll reveal ---------------- */
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -306,16 +312,16 @@ function renderVideos(category) {
     card.className = "video-card reveal" + (video.wide ? " wide" : "");
     card.style.setProperty("--d", `${(index % 4) * 0.08}s`);
 
-    // Poster jpg lives next to the mp4 — mobile browsers won't preload
-    // video frames, so the poster is what makes cards render there
+    // Poster jpg lives next to the mp4 and is what the card shows, so the
+    // video itself downloads nothing until someone presses play
     const media = video.src
-      ? `<video src="${video.src}" poster="${video.src.replace(".mp4", ".jpg")}" controls preload="metadata" playsinline></video>`
+      ? `<video src="${video.src}" poster="${video.src.replace(".mp4", ".jpg")}" controls preload="none" playsinline></video>`
       : `<div class="video-placeholder"><span class="play-icon"></span><span>${labels.soon}</span></div>`;
 
     card.innerHTML = `
       ${media}
       <div class="video-meta">
-        <h5>${video.title}</h5>
+        <h3>${video.title}</h3>
         <span>${labels[video.category]}</span>
       </div>`;
     videoGrid.appendChild(card);
