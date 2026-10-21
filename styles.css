@@ -10,7 +10,6 @@
   color-scheme: only light;
   interpolate-size: allow-keywords; /* lets height animate to auto (FAQ) */
   --navy: #14181C;
-  --navy-deep: #0E1A2B;
   --green: #575C49;        /* logo green */
   --green-dark: #464A3A;   /* hover */
   --green-light: #9AA184;  /* small accent text on dark backgrounds */
@@ -161,19 +160,41 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 }
 
 .review-card {
-  background: var(--navy-deep);
-  border-left: 3px solid var(--green);
+  background: var(--green);
+  border-left: 3px solid var(--green-light);
   padding: 28px;
 }
 
-.review-card p { font-size: 1rem; margin-bottom: 18px; }
+.review-card p { font-size: 0.92rem; margin-bottom: 14px; }
 
 .review-card footer {
-  font-size: 0.85rem;
-  color: var(--green-light);
+  font-size: 0.75rem;
+  color: var(--white);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
+
+/* ---------------- Who we work with: niche cards ---------------- */
+.who { background: var(--navy); padding: 100px 0 0; }
+.who .eyebrow { color: var(--green-light); }
+
+.niche-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+
+.niche {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 3px solid var(--green);
+  padding: 32px 28px;
+}
+.niche .step-number { color: var(--green-light); font-size: 1.1rem; }
+.niche h3 { font-size: 1.5rem; margin: 10px 0 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+.niche p { opacity: 0.85; font-size: 0.97rem; }
+
+.catch-all { margin-top: 36px; font-size: 1.1rem; }
+.catch-all a {
+  color: var(--green-light); font-weight: 700; text-decoration: none;
+  border-bottom: 2px solid var(--green-light); margin-left: 6px;
+}
+.catch-all a:hover { color: var(--white); border-color: var(--white); }
 
 /* ---------------- Hero: reel-first split ---------------- */
 .hero-split {
@@ -248,7 +269,6 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 .client-card:hover { border-color: var(--green-light); }
 
 .client-name { font-weight: 700; font-size: 0.8rem; text-align: center; text-transform: uppercase; letter-spacing: 0.06em; }
-
 .client-logo-img { width: 100%; height: 84px; object-fit: contain; background: #0A0A0A; padding: 10px; }
 .client-card.light .client-logo-img { background: var(--white); }
 /* .zoom: crop into the center of a square logo so the wordmark reads larger */
@@ -355,7 +375,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 
 .video-card {
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: var(--navy-deep);
+  background: var(--green);
   overflow: hidden;
 }
 
@@ -365,7 +385,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   aspect-ratio: 9 / 16;
   display: block;
   object-fit: cover;
-  background: var(--navy-deep);
+  background: var(--green);
 }
 
 /* Landscape clips get a double-width 16:9 card instead of a cropped sliver */
@@ -420,7 +440,8 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--green-light);
+  color: var(--white);
+  opacity: 0.8;
 }
 
 .work-socials { margin-top: 48px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
@@ -452,7 +473,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 .faq-list { margin-top: 40px; max-width: 760px; display: grid; gap: 12px; }
 
 .faq-item {
-  background: var(--navy-deep);
+  background: var(--green);
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
@@ -462,7 +483,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
   padding: 20px 24px;
   font-weight: 500;
-  transition: color 0.2s ease;
+  transition: background 0.2s ease;
 }
 
 .faq-item summary::-webkit-details-marker { display: none; }
@@ -472,14 +493,14 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 .faq-item summary::after {
   content: "+";
   font-size: 1.5rem; font-weight: 500; line-height: 1;
-  color: var(--green-light);
+  color: var(--white);
   flex-shrink: 0;
   transition: transform 0.25s ease;
 }
 
 .faq-item[open] summary::after { transform: rotate(45deg); }
 
-.faq-item summary:hover { color: var(--green-light); }
+.faq-item summary:hover { background: var(--green-dark); }
 
 .faq-item p { padding: 0 24px 22px; opacity: 0.85; font-size: 0.95rem; max-width: 660px; }
 
@@ -561,9 +582,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 
 /* ---------------- Footer (NOA-style: brand top, link columns, bottom bar) ---------------- */
 .site-footer {
-  background:
-    radial-gradient(130% 90% at 50% 145%, rgba(87, 92, 73, 0.65), transparent 60%),
-    var(--navy-deep);
+  background: var(--green);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding: 64px 0 28px;
 }
@@ -576,7 +595,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 }
 
 .footer-heading {
-  font-size: 0.72rem; font-weight: 500; color: var(--green-light);
+  font-size: 0.72rem; font-weight: 500; color: rgba(255, 255, 255, 0.75);
   text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 12px;
 }
 
@@ -584,10 +603,10 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   display: block; width: fit-content; padding: 5px 0;
   color: var(--white); text-decoration: none; font-size: 0.95rem; opacity: 0.85;
 }
-.footer-col a:hover { opacity: 1; color: var(--green-light); }
+.footer-col a:hover { opacity: 1; }
 
 .footer-tagline {
-  justify-self: end; font-size: 0.72rem; color: var(--green-light);
+  justify-self: end; font-size: 0.72rem; color: rgba(255, 255, 255, 0.75);
   text-transform: uppercase; letter-spacing: 0.14em;
 }
 
@@ -597,7 +616,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   color: var(--white); text-decoration: none; opacity: 0.8;
   font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
 }
-.footer-bottom a:hover { opacity: 1; color: var(--green-light); }
+.footer-bottom a:hover { opacity: 1; }
 
 .footer-copy { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.55; }
 
@@ -618,6 +637,8 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 .stats-grid > :nth-child(3), .process-grid > :nth-child(3), .clients-grid > :nth-child(3), .journey > :nth-child(3) { --d: 0.16s; }
 .stats-grid > :nth-child(4), .process-grid > :nth-child(4), .clients-grid > :nth-child(4), .journey > :nth-child(4) { --d: 0.24s; }
 .clients-grid > :nth-child(5) { --d: 0.32s; }
+.niche-grid > :nth-child(2) { --d: 0.08s; }
+.niche-grid > :nth-child(3) { --d: 0.16s; }
 .reviews-grid > :nth-child(2) { --d: 0.1s; }
 .reviews-grid > :nth-child(3) { --d: 0.2s; }
 
@@ -634,6 +655,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 @media (max-width: 900px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .reviews-grid { grid-template-columns: 1fr; }
+  .niche-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: repeat(2, 1fr); }
   .video-grid { grid-template-columns: repeat(2, 1fr); }
   .clients-grid { grid-template-columns: repeat(2, 1fr); }
@@ -658,6 +680,10 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   .container { padding: 0 18px; }
   .hero { padding: 52px 0 60px; }
   .about, .preview, .faq, .contact { padding: 60px 0; }
+  .who { padding-top: 52px; }
+  .niche { padding: 24px 20px; }
+  .niche h3 { font-size: 1.25rem; }
+  .catch-all { font-size: 1rem; }
   .faq-item summary { padding: 16px 18px; }
   .faq-item p { padding: 0 18px 18px; }
   .hero-split { min-height: 0; padding: 44px 0 56px; }

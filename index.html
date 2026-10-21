@@ -9,6 +9,13 @@
   <meta name="keywords" content="production, marketing, advertising, film production, social media, commercials, brand films, video marketing">
   <meta property="og:title" content="AK Media | Production, Marketing & Advertising">
   <meta property="og:description" content="We produce films for businesses and make them perform across social media and commercial campaigns">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.akmediaz.com/">
+  <!-- Link preview image (DMs, iMessage, LinkedIn) — must be an absolute URL -->
+  <meta property="og:image" content="https://www.akmediaz.com/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,27 +23,6 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <script>
-    // Always open on the very top of the page, even if the shared/opened
-    // URL carries a #section hash (e.g. from a copied address-bar link).
-    // The browser resolves the fragment scroll again once the target
-    // element and layout are ready (after load), so we must re-force the
-    // scroll then too — stripping the hash early isn't enough on its own.
-    (function () {
-      var hadHash = !!window.location.hash;
-      if (!hadHash) return;
-      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-      var toTop = function () { window.scrollTo(0, 0); };
-      toTop();
-      history.replaceState(null, "", window.location.pathname + window.location.search);
-      window.addEventListener("load", function () {
-        toTop();
-        setTimeout(toTop, 0);
-        setTimeout(toTop, 300);
-      });
-    })();
-  </script>
-
   <!-- ============ HEADER ============ -->
   <header class="site-header">
     <a href="#top" class="brand">
@@ -110,6 +96,32 @@
       </div>
     </div>
   </div>
+
+  <!-- ============ WHO WE WORK WITH: NICHES ============ -->
+  <section class="who">
+    <div class="container">
+      <p class="eyebrow reveal" data-i18n="who.eyebrow">Who we work with</p>
+      <h2 class="reveal" data-i18n="who.title">We know your business.</h2>
+      <div class="niche-grid">
+        <div class="niche reveal">
+          <span class="step-number">01</span>
+          <h3 data-i18n="n1.t">Real estate</h3>
+          <p data-i18n="n1.p">Listings that get seen, and a name people remember. We film the homes, run the ads and make you the go-to agent in your area.</p>
+        </div>
+        <div class="niche reveal">
+          <span class="step-number">02</span>
+          <h3 data-i18n="n2.t">Law firms</h3>
+          <p data-i18n="n2.p">When people need a lawyer, they call the one they already trust. We make the content that builds that trust, and the ads that reach people when they need you.</p>
+        </div>
+        <div class="niche reveal">
+          <span class="step-number">03</span>
+          <h3 data-i18n="n3.t">Dealerships</h3>
+          <p data-i18n="n3.p">Cars that stop the scroll, and ads that bring people to the lot. More test drives, not just more likes.</p>
+        </div>
+      </div>
+      <p class="catch-all reveal"><span data-i18n="who.catch">Not on the list? We work with any business that wants to grow.</span> <a href="#contact" data-i18n="who.cta">Let's talk</a></p>
+    </div>
+  </section>
 
   <!-- ============ 1. RESULTS: STATS, REVIEWS & CLIENTS ============ -->
   <section id="results" class="hero">
@@ -344,7 +356,7 @@
     <div class="container">
       <p class="eyebrow reveal" data-i18n="contact.eyebrow">Contact</p>
       <h2 class="reveal" data-i18n="contact.title">Ready to grow?</h2>
-      <p class="contact-sub reveal" data-i18n="contact.sub">Fill in the form and we'll get back to you within 72 hours.</p>
+      <p class="contact-sub reveal" data-i18n="contact.sub">Fill in the form and we'll get back to you within 24 hours.</p>
 
       <form id="contactForm" class="reveal" action="https://formsubmit.co/akram.hameed8@icloud.com" method="POST" novalidate>
         <input type="hidden" name="_subject" value="New inquiry: AK Media website">
@@ -383,7 +395,7 @@
           <span class="field-error" data-for="message" data-i18n="e.message">Please write a message.</span>
         </div>
         <button type="submit" class="btn btn-green" data-i18n="f.send">Send message</button>
-        <p class="form-success" id="formSuccess" hidden data-i18n="f.success">Thank you! We'll get back to you within 72 hours.</p>
+        <p class="form-success" id="formSuccess" hidden data-i18n="f.success">Thank you! We'll get back to you within 24 hours.</p>
         <p class="form-error" id="formError" hidden data-i18n="f.error">Something went wrong. Please try again, or DM us on Instagram instead.</p>
       </form>
 
