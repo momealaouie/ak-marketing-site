@@ -29,6 +29,7 @@
   color-scheme: only light;
   interpolate-size: allow-keywords; /* lets height animate to auto (FAQ) */
   --navy: #14181C;
+  --navy-deep: #0E1A2B;
   --green: #575C49;        /* logo green */
   --green-dark: #464A3A;   /* hover */
   --green-light: #9AA184;  /* small accent text on dark backgrounds */
@@ -372,7 +373,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 
 .video-card {
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: var(--green);
+  background: var(--navy-deep);
   overflow: hidden;
 }
 
@@ -382,7 +383,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   aspect-ratio: 9 / 16;
   display: block;
   object-fit: cover;
-  background: var(--green);
+  background: var(--navy-deep);
 }
 
 /* Landscape clips get a double-width 16:9 card instead of a cropped sliver */
@@ -438,8 +439,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--white);
-  opacity: 0.8;
+  color: var(--green-light);
 }
 
 .work-socials { margin-top: 48px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
