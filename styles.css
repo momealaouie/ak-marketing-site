@@ -29,10 +29,9 @@
   color-scheme: only light;
   interpolate-size: allow-keywords; /* lets height animate to auto (FAQ) */
   --navy: #14181C;
-  --navy-deep: #0E1A2B;
-  --green: #575C49;        /* logo green */
-  --green-dark: #464A3A;   /* hover */
-  --green-light: #9AA184;  /* small accent text on dark backgrounds */
+  --green: #546054;        /* logo green — exact pixel value of assets/logo.png */
+  --green-dark: #454F45;   /* hover — same hue, darker */
+  --green-light: #8A9B8A;  /* small accent text on dark backgrounds — same hue, lighter */
   --white: #FFFFFF;
   --off-white: #F2F1EC;
   --font: "Space Grotesk", system-ui, -apple-system, sans-serif;
@@ -244,7 +243,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   display: inline-flex; align-items: center; gap: 8px;
   padding: 9px 18px;
   border: 1px solid var(--green-light);
-  background: rgba(154, 161, 132, 0.1);
+  background: rgba(138, 155, 138, 0.1);
   color: var(--white); font-size: 0.8rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: 0.1em;
 }
@@ -373,7 +372,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 
 .video-card {
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: var(--navy-deep);
+  background: var(--green);
   overflow: hidden;
 }
 
@@ -383,7 +382,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   aspect-ratio: 9 / 16;
   display: block;
   object-fit: cover;
-  background: var(--navy-deep);
+  background: var(--green);
 }
 
 /* Landscape clips get a double-width 16:9 card instead of a cropped sliver */
@@ -439,7 +438,8 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--green-light);
+  color: var(--white);
+  opacity: 0.8;
 }
 
 .work-socials { margin-top: 48px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
@@ -596,7 +596,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 }
 
 .footer-heading {
-  font-size: 0.72rem; font-weight: 500; color: rgba(255, 255, 255, 0.75);
+  font-size: 0.72rem; font-weight: 500; color: rgba(255, 255, 255, 0.8);
   text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 12px;
 }
 
@@ -607,7 +607,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 .footer-col a:hover { opacity: 1; }
 
 .footer-tagline {
-  justify-self: end; font-size: 0.72rem; color: rgba(255, 255, 255, 0.75);
+  justify-self: end; font-size: 0.72rem; color: rgba(255, 255, 255, 0.8);
   text-transform: uppercase; letter-spacing: 0.14em;
 }
 
