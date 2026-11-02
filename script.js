@@ -7,29 +7,33 @@
    Only selected videos are shown on the site. Drop the video file
    in assets/videos/ and set its path as "src". Leave src as null
    to show a placeholder until the file is in place.
-   category: "commercial" | "interviews" | "location"
+   categories: "cars" | "restaurants" | "international" | "business"
+   A video can sit in several tabs; the first one is its label on "All".
+   The list order is the display order: portrait cards in fours and
+   wide cards in pairs keep the rows even.
    ---------------------------------------------------------------- */
 const VIDEOS = [
-  // Reels (portrait, cars & vertical edits)
-  { title: "Däckcentrum, Porsche 718 Spyder", category: "reels", src: "assets/videos/porsche-dackcentrum.mp4" },
-  { title: "Tom Auto AB, Mercedes-AMG C63", category: "reels", src: "assets/videos/tomauto-c63.mp4" },
-  { title: "Däckcentrum, Range Rover", category: "reels", src: "assets/videos/rangerover-reel.mp4" },
-  { title: "Venedig, Reklamvideo", category: "reels", src: "assets/videos/helsingborg-reel.mp4" },
-  // Commercial shoots (landscape, rendered as wide 16:9 cards)
-  { title: "Däckcentrum, Car & wheels", category: "commercial", src: "assets/videos/custom-wheels.mp4", wide: true },
-  { title: "Halmstad University, International department", category: "commercial", src: "assets/videos/hh-campus-aerial.mp4", wide: true },
-  { title: "Ademi AB, Client interview", category: "commercial", src: "assets/videos/industrial-aerial.mp4", wide: true },
-  { title: "Däckcentrum, Reklamfilm", category: "commercial", src: "assets/videos/helsingborg-cityfilm.mp4", wide: true },
-  // BTS
-  { title: "Däckcentrum, Premium Wheel & Tire", category: "bts", src: "assets/videos/dackcentrum-showroom.mp4" },
-  { title: "Däckcentrum, Premium Wheel & Tire", category: "bts", src: "assets/videos/dackcentrum-wheels.mp4" },
-  { title: "Ademi AB, In studio", category: "bts", src: "assets/hero.mp4" },
-  { title: "IBJJF, European Championship", category: "bts", src: "assets/videos/sports-event.mp4" },
+  // Portrait
+  { title: "The Coffee Company, Los Angeles", categories: ["restaurants", "international"], src: "assets/videos/coffee-company.mp4" },
+  { title: "Däckcentrum, Porsche 718 Spyder", categories: ["cars"], src: "assets/videos/porsche-dackcentrum.mp4" },
+  { title: "Tom Auto AB, Mercedes-AMG C63", categories: ["cars"], src: "assets/videos/tomauto-c63.mp4" },
+  { title: "Venedig, Reklamvideo", categories: ["restaurants"], src: "assets/videos/helsingborg-reel.mp4" },
+  { title: "Däckcentrum, Range Rover", categories: ["cars"], src: "assets/videos/rangerover-reel.mp4" },
+  { title: "Däckcentrum, Premium Wheel & Tire", categories: ["cars"], src: "assets/videos/dackcentrum-showroom.mp4" },
+  { title: "Ademi AB, In studio", categories: ["business"], src: "assets/hero.mp4" },
+  { title: "IBJJF, European Championship", categories: ["international"], src: "assets/videos/sports-event.mp4" },
+  // Landscape, rendered as wide 16:9 cards
+  { title: "Däckcentrum, Car & wheels", categories: ["cars"], src: "assets/videos/custom-wheels.mp4", wide: true },
+  { title: "Halmstad University, International department", categories: ["international"], src: "assets/videos/hh-campus-aerial.mp4", wide: true },
+  { title: "Ademi AB, Client interview", categories: ["business"], src: "assets/videos/industrial-aerial.mp4", wide: true },
+  { title: "Däckcentrum, Reklamfilm", categories: ["cars"], src: "assets/videos/helsingborg-cityfilm.mp4", wide: true },
+  // Portrait
+  { title: "Däckcentrum, Premium Wheel & Tire", categories: ["cars"], src: "assets/videos/dackcentrum-wheels.mp4" },
 ];
 
 const CATEGORY_LABELS = {
-  en: { reels: "Reels", commercial: "Commercial shoots", bts: "BTS", soon: "Coming soon" },
-  sv: { reels: "Reels", commercial: "Reklamfilm", bts: "BTS", soon: "Kommer snart" },
+  en: { cars: "Cars", restaurants: "Restaurants", international: "International projects", business: "Business", soon: "Coming soon" },
+  sv: { cars: "Bilar", restaurants: "Restauranger", international: "Internationella projekt", business: "Företag", soon: "Kommer snart" },
 };
 
 /* ----------------------------------------------------------------
@@ -67,7 +71,7 @@ const I18N = {
     "step4.t": "Analysis", "step4.p": "Every month you get a report with numbers that matter, and we adjust the strategy accordingly.",
     "work.eyebrow": "Selected work", "work.title": "Our Work.",
     "work.sub": "A glimpse of what we do.",
-    "tab.all": "All", "tab.reels": "Reels", "tab.commercial": "Commercial shoots", "tab.bts": "BTS",
+    "tab.all": "All", "tab.cars": "Cars", "tab.restaurants": "Restaurants", "tab.international": "International projects", "tab.business": "Business",
     "work.feed": "Watch the full feed",
     "faq.eyebrow": "FAQ", "faq.title": "Questions &amp; answers.",
     "faq1.q": "How much does it cost?",
@@ -125,7 +129,7 @@ const I18N = {
     "step4.t": "Analys", "step4.p": "Varje månad får ni en rapport med siffror som betyder något, och vi justerar strategin därefter.",
     "work.eyebrow": "Utvalda arbeten", "work.title": "Vårt arbete.",
     "work.sub": "En glimt av vad vi gör.",
-    "tab.all": "Alla", "tab.reels": "Reels", "tab.commercial": "Reklamfilm", "tab.bts": "BTS",
+    "tab.all": "Alla", "tab.cars": "Bilar", "tab.restaurants": "Restauranger", "tab.international": "Internationella projekt", "tab.business": "Företag",
     "work.feed": "Se hela flödet",
     "faq.eyebrow": "FAQ", "faq.title": "Frågor &amp; svar.",
     "faq1.q": "Vad kostar det?",
@@ -305,7 +309,7 @@ function renderVideos(category) {
   const labels = CATEGORY_LABELS[LANG];
   const filtered = category === "all"
     ? VIDEOS
-    : VIDEOS.filter((v) => v.category === category);
+    : VIDEOS.filter((v) => v.categories.includes(category));
 
   filtered.forEach((video, index) => {
     const card = document.createElement("div");
@@ -322,7 +326,7 @@ function renderVideos(category) {
       ${media}
       <div class="video-meta">
         <h3>${video.title}</h3>
-        <span>${labels[video.category]}</span>
+        <span>${labels[category === "all" ? video.categories[0] : category]}</span>
       </div>`;
     videoGrid.appendChild(card);
     revealObserver.observe(card);

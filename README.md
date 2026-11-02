@@ -26,10 +26,10 @@ Static website for a film production & marketing agency. Sharp corners, premium 
 Open `script.js` and edit the `VIDEOS` list at the top:
 
 ```js
-{ title: "Launch campaign", category: "reels", src: "assets/videos/launch.mp4" },
+{ title: "Launch campaign", categories: ["cars"], src: "assets/videos/launch.mp4" },
 ```
 
-`src: null` shows a placeholder until the file exists. Categories: `reels`, `ads`, `brand`.
+`src: null` shows a placeholder until the file exists. Categories: `cars`, `restaurants`, `international`, `business`. A video can be in several.
 
 ### Contact form
 The form posts to [FormSubmit](https://formsubmit.co) and delivers submissions to the email address in the form `action` in `index.html` — no account needed. **The first submission triggers a one-time activation email to that address; click the link in it to start receiving messages.** To change the recipient, edit the address in the `action` attribute. After activation, FormSubmit emails you a random alias string you can use in the `action` instead of the plain address to keep it out of the page source.
